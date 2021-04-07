@@ -1,6 +1,15 @@
 <template>
+
   <div id="login" class="text-center">
+
+  <div> 
+    <img src="@/assets/tehoot-logo-final.png" alt="Tehoot logo">
+    <!--Test Logo-->
+   
+    <!--<h3>Create your own flashcards!<br>
+        Wise up on any subject!</h3>-->
     <form class="form-signin" @submit.prevent="login">
+
       <h1 class="h3 mb-3 font-weight-normal">Please Sign In</h1>
       <div
         class="alert alert-danger"
@@ -22,6 +31,7 @@
         required
         autofocus
       />
+      <br>
       <label for="password" class="sr-only">Password</label>
       <input
         type="password"
@@ -31,9 +41,13 @@
         v-model="user.password"
         required
       />
-      <router-link :to="{ name: 'register' }">Need an account?</router-link>
+      <br>
+
+      <router-link :to="{ name: 'register' }">Need an account?</router-link><br>
       <button type="submit">Sign in</button>
     </form>
+
+  </div>
   </div>
 </template>
 
@@ -74,3 +88,39 @@ export default {
   }
 };
 </script>
+
+<style>
+
+/* Rectangle 4 */
+
+body {
+background: #7DDFA4;
+text-align: center;
+font-family: Helvetica, Arial, sans-serif;
+}
+
+h3{
+  color: White;
+}
+
+img {
+filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.1));
+width: 50%;
+}
+
+#login{
+  margin: auto;
+}
+
+form {
+  font-size: 20px;
+  padding: 15px;
+
+}
+
+.form-control{
+  margin: 10px;
+  padding: 5px;
+}
+</style>
+
