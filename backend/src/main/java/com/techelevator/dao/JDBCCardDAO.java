@@ -33,7 +33,46 @@ public class JDBCCardDAO implements CardDAO {
 		
 		return allCards;
 	}
+	
+	@Override
+	public Card getCardById(int userId, int cardId) {
+		
+		String sqlGetCardById = "SELECT question, answer, subject.subject_name FROM cards"
+				+ " JOIN subject USING (subject_id) WHERE creator_id = ? AND card_id = ?;";
+		
+		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlGetCardById, userId, cardId);
+		results.next();
+		Card card = mapRowToCard(results);
+		
+		return card;
+	}
 
+
+
+	@Override
+	public List<Card> getCardsBySubject(int userId, String subject) {
+		
+		List<Card> cards = new ArrayList<>();
+		
+		String sqlGetCardBySubject = "SELECT question, answer, subject.subject_name FROM cards"
+				+ " JOIN subject USING (subject_id) WHERE creator_id = ? AND subject.subject_name = ?;";
+		
+		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlGetCardsBySubject, userId, subject);
+		while (results.next()) {
+			Card card = mapRowToCard(results);
+			cards.add(card);
+		}
+				 
+				
+		return cards;
+	}
+
+	@Override
+	public List<Card> getCardsByKeyword(String keyword) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
 	private Card mapRowToCard(SqlRowSet rs) {
 		Card card = new Card();
 		card.setQuestion(rs.getString("question"));
