@@ -28,17 +28,26 @@ public class CardController {
 		return dao.getAllCards(principal.getName());
 	}
 	
-	@RequestMapping(path = "/user/{cardId}", method = RequestMethod.GET)
+	@RequestMapping(path = "/user/cards/{cardId}", method = RequestMethod.GET)
 	public Card getCardById(Principal principal, @PathVariable int cardId) {
 		return dao.getCardById(principal.getName(), cardId);
 	}
 	
-	@RequestMapping(path = "/user/{subject}", method = RequestMethod.GET)
+	@RequestMapping(path = "/user/cards/{subject}", method = RequestMethod.GET)
 	public List<Card> getCardsBySubject(Principal principal, @PathVariable String subject) {
 		return dao.getCardsBySubject(principal.getName(), subject);
 	}
 	
-	//placeholder for getCardsByKeyword
+	@RequestMapping(path = "/user/cards/{keyword}", method = RequestMethod.GET)
+	public List<Card> getCardsByKeyword(Principal principal, String keyword) {
+		return dao.getCardsByKeyword(principal.getName(), keyword);
+	}
+	
+	@RequestMapping(path = "/user/cards/create", method =RequestMethod.POST)
+	public boolean createCard(String question, String answer, String subject, String user) {
+		return dao.createCard(question, answer, subject, user);
+	}
+	
 
 }
 
