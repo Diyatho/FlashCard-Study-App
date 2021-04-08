@@ -46,6 +46,10 @@
 
       <router-link :to="{ name: 'register' }">Need an account?</router-link><br>
       <button type="submit">Sign in</button>
+
+      <router-link :to="{ name: 'explore' }">Explore!</router-link>
+
+
     </form>
 
   <img id="Owl" src="@/assets/TEHOOTOwl.png" alt="Owl">
