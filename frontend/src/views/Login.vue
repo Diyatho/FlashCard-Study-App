@@ -2,15 +2,16 @@
 
   <div id="login" class="text-center">
 
-  <div> 
-    <img src="@/assets/tehoot-logo-final.png" alt="Tehoot logo">
+    <img src="@/assets/TEHOOT.png" alt="Tehoot logo">
+  
     <!--Test Logo-->
    
     <!--<h3>Create your own flashcards!<br>
         Wise up on any subject!</h3>-->
-    <form class="form-signin" @submit.prevent="login">
 
       <h1 class="h3 mb-3 font-weight-normal">Please Sign In</h1>
+    <form class="form-signin" @submit.prevent="login">
+
       <div
         class="alert alert-danger"
         role="alert"
@@ -47,7 +48,8 @@
       <button type="submit">Sign in</button>
     </form>
 
-  </div>
+  <img id="Owl" src="@/assets/TEHOOTOwl.png" alt="Owl">
+  
   </div>
 </template>
 
@@ -112,15 +114,27 @@ width: 50%;
   margin: auto;
 }
 
+#Owl{
+  width: 275px;
+  margin: 15px;
+}
+
 form {
   font-size: 20px;
   padding: 15px;
-
+  background: rgb(211, 211, 211);
+  border-style: solid;
+  
 }
 
 .form-control{
   margin: 10px;
   padding: 5px;
+}
+
+button{
+  font-size: 20px;
+  margin: 7px;
 }
 </style>
 

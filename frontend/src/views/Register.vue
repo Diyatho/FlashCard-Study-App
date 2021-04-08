@@ -1,7 +1,10 @@
 <template>
   <div id="register" class="text-center">
-    <form class="form-register" @submit.prevent="register">
+    
+    <img src="@/assets/TEHOOT.png" alt="logo">
+
       <h1 class="h3 mb-3 font-weight-normal">Create Account</h1>
+    <form class="form-register" @submit.prevent="register">
       <div class="alert alert-danger" role="alert" v-if="registrationErrors">
         {{ registrationErrorMsg }}
       </div>
@@ -14,7 +17,7 @@
         v-model="user.username"
         required
         autofocus
-      />
+      /><br>
       <label for="password" class="sr-only">Password</label>
       <input
         type="password"
@@ -23,7 +26,8 @@
         placeholder="Password"
         v-model="user.password"
         required
-      />
+      /> <br>
+      <label for="confirmPassword" class="sr-only">Confirm</label>
       <input
         type="password"
         id="confirmPassword"
@@ -31,12 +35,15 @@
         placeholder="Confirm Password"
         v-model="user.confirmPassword"
         required
-      />
-      <router-link :to="{ name: 'login' }">Have an account?</router-link>
+      /><br>
+      <router-link :to="{ name: 'login' }">Have an account?</router-link><br>
       <button class="btn btn-lg btn-primary btn-block" type="submit">
         Create Account
       </button>
     </form>
+    
+    <img id="Owl" src="@/assets/TEHOOTOwl.png" alt="Owl">
+    
   </div>
 </template>
 
@@ -90,4 +97,33 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+
+body {
+background: #7DDFA4;
+text-align: center;
+font-family: Helvetica, Arial, sans-serif;
+}
+img{ 
+  width: 800px;
+}
+
+#Owl{
+  width: 275px;
+  margin: 15px;
+}
+
+form {
+  font-size: 20px;
+  padding: 15px;
+  background: rgb(211, 211, 211);
+  border-style: solid;
+  
+}
+
+button{
+  font-size: 20px;
+  margin: 7px;
+}
+
+</style>
