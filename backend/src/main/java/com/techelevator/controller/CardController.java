@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,17 +29,27 @@ public class CardController {
 		return dao.getAllCards(principal.getName());
 	}
 	
-	@RequestMapping(path = "/user/{cardId}", method = RequestMethod.GET)
+	@RequestMapping(path = "/user/cards/{cardId}", method = RequestMethod.GET)
 	public Card getCardById(Principal principal, @PathVariable int cardId) {
 		return dao.getCardById(principal.getName(), cardId);
 	}
 	
-	@RequestMapping(path = "/user/{subject}", method = RequestMethod.GET)
+	@RequestMapping(path = "/user/cards/{subject}", method = RequestMethod.GET)
 	public List<Card> getCardsBySubject(Principal principal, @PathVariable String subject) {
 		return dao.getCardsBySubject(principal.getName(), subject);
 	}
 	
-	//placeholder for getCardsByKeyword
+	@RequestMapping(path = "/user/cards/{keyword}", method = RequestMethod.GET)
+	public List<Card> getCardsByKeyword(Principal principal, @PathVariable String keyword) {
+		return dao.getCardsByKeyword(principal.getName(), keyword);
+	}
+	
+	@RequestMapping(path = "/user/cards/create", method =RequestMethod.POST)
+	public boolean createCard(@RequestBody Card card, Principal principal) {
+		return dao.createCard(card.getQuestion(), card.getAnswer(), card.getSubject(), principal.getName());
+
+	}
+	
 
 }
 
