@@ -22,7 +22,7 @@ public class JDBCCardDAO implements CardDAO {
 	public List<Card> getAllCards(String user) {
 		List<Card> allCards = new ArrayList<>();
 		
-		String sqlGetAllCards = "SELECT question, answer, subject.subject_name FROM cards\n" + 
+		String sqlGetAllCards = "SELECT card_id, question, answer, subject.subject_name FROM cards\n" + 
 				"JOIN subject USING (subject_id)\n" + 
 				"JOIN users on users.user_id = cards.creator_id\n" + 
 				"WHERE username = ?;";
@@ -55,7 +55,7 @@ public class JDBCCardDAO implements CardDAO {
 		
 		List<Card> cards = new ArrayList<>();
 		
-		String sqlGetCardsBySubject = "SELECT question, answer, subject.subject_name FROM cards"
+		String sqlGetCardsBySubject = "SELECT card_id, question, answer, subject.subject_name FROM cards"
 				+ " JOIN subject USING (subject_id) JOIN users ON creator_id = user_id"
 				+ " WHERE users.username = ? AND subject.subject_name = ?;";
 		
@@ -84,6 +84,8 @@ public class JDBCCardDAO implements CardDAO {
 	
 	@Override
 	public boolean createCard(String question, String answer, String subject, String[] keywords) {
+		
+		
 		return true;
 	}
 	
