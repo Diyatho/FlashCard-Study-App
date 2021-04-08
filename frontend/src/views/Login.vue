@@ -1,7 +1,17 @@
 <template>
+
   <div id="login" class="text-center">
-    <form class="form-signin" @submit.prevent="login">
+
+    <img src="@/assets/TEHOOT.png" alt="Tehoot logo">
+  
+    <!--Test Logo-->
+   
+    <!--<h3>Create your own flashcards!<br>
+        Wise up on any subject!</h3>-->
+
       <h1 class="h3 mb-3 font-weight-normal">Please Sign In</h1>
+    <form class="form-signin" @submit.prevent="login">
+
       <div
         class="alert alert-danger"
         role="alert"
@@ -22,6 +32,7 @@
         required
         autofocus
       />
+      <br>
       <label for="password" class="sr-only">Password</label>
       <input
         type="password"
@@ -31,13 +42,18 @@
         v-model="user.password"
         required
       />
-      <router-link :to="{ name: 'register' }">Need an account?</router-link>
+      <br>
+
+      <router-link :to="{ name: 'register' }">Need an account?</router-link><br>
       <button type="submit">Sign in</button>
 
       <router-link :to="{ name: 'explore' }">Explore!</router-link>
 
 
     </form>
+
+  <img id="Owl" src="@/assets/TEHOOTOwl.png" alt="Owl">
+  
   </div>
 </template>
 
@@ -78,3 +94,51 @@ export default {
   }
 };
 </script>
+
+<style>
+
+/* Rectangle 4 */
+
+body {
+background: #7DDFA4;
+text-align: center;
+font-family: Helvetica, Arial, sans-serif;
+}
+
+h3{
+  color: White;
+}
+
+img {
+filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.1));
+width: 50%;
+}
+
+#login{
+  margin: auto;
+}
+
+#Owl{
+  width: 275px;
+  margin: 15px;
+}
+
+form {
+  font-size: 20px;
+  padding: 15px;
+  background: rgb(211, 211, 211);
+  border-style: solid;
+  
+}
+
+.form-control{
+  margin: 10px;
+  padding: 5px;
+}
+
+button{
+  font-size: 20px;
+  margin: 7px;
+}
+</style>
+
