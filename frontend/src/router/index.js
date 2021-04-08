@@ -5,6 +5,11 @@ import Login from '../views/Login.vue'
 import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import store from '../store/index'
+import Explore from '../views/Explore.vue'
+import CreateCard from '../views/CreateCard.vue'
+import ViewDecks from '../views/ViewDecks.vue'
+import StudySession from '../views/StudySession.vue'
+import ViewCards from '../views/ViewCards.vue'
 
 Vue.use(Router)
 
@@ -53,6 +58,48 @@ const router = new Router({
         requiresAuth: false
       }
     },
+    {
+      path: "/explore",
+      name: "explore",
+      component: Explore,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: "/user/cards/create",
+      name: "createCard",
+      component: CreateCard,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/user/decks/view",
+      name: "viewDecks",
+      component: ViewDecks,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/user/studySession",
+      name: "studySession",
+      component: StudySession,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    
+    {
+      path: "/user/cards/view",
+      name: "viewCards",
+      component: ViewCards,
+      meta: {
+        requiresAuth: true
+      }
+    },
+
   ]
 })
 
