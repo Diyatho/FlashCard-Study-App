@@ -19,13 +19,15 @@ public class JDBCCardDAO implements CardDAO {
 	}
 
 	@Override
-	public List<Card> getAllCards(int userId) {
+	public List<Card> getAllCards(String user) {
 		List<Card> allCards = new ArrayList<>();
 		
-		String sqlGetAllCards = "SELECT question, answer, subject.subject_name FROM cards"
-				+ " JOIN subject USING (subject_id) WHERE creator_id = ?;";
-		
-		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlGetAllCards, userId); 
+		String sqlGetAllCards = "SELECT question, answer, subject.subject_name FROM cards\n" + 
+				"JOIN subject USING (subject_id)\n" + 
+				"JOIN users on users.user_id = cards.creator_id\n" + 
+				"WHERE username = ?;";
+	
+		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlGetAllCards, user); 
 		while (results.next()) {
 			Card card = mapRowToCard(results);
 			allCards.add(card);
@@ -35,42 +37,54 @@ public class JDBCCardDAO implements CardDAO {
 	}
 	
 	@Override
-	public Card getCardById(int userId, int cardId) {
+	public Card getCardById(String user, int cardId) {
 		
 		String sqlGetCardById = "SELECT question, answer, subject.subject_name FROM cards"
-				+ " JOIN subject USING (subject_id) WHERE creator_id = ? AND card_id = ?;";
+				+ " JOIN subject USING (subject_id) JOIN users ON creator_id = user_id"
+				+ " WHERE users.username = ? AND card_id = ?;";
 		
-		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlGetCardById, userId, cardId);
+		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlGetCardById, user, cardId);
 		results.next();
 		Card card = mapRowToCard(results);
 		
 		return card;
 	}
 
-
-
 	@Override
-	public List<Card> getCardsBySubject(int userId, String subject) {
+	public List<Card> getCardsBySubject(String user, String subject) {
 		
 		List<Card> cards = new ArrayList<>();
 		
-		String sqlGetCardBySubject = "SELECT question, answer, subject.subject_name FROM cards"
-				+ " JOIN subject USING (subject_id) WHERE creator_id = ? AND subject.subject_name = ?;";
+		String sqlGetCardsBySubject = "SELECT question, answer, subject.subject_name FROM cards"
+				+ " JOIN subject USING (subject_id) JOIN users ON creator_id = user_id"
+				+ " WHERE users.username = ? AND subject.subject_name = ?;";
 		
-		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlGetCardsBySubject, userId, subject);
+		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlGetCardsBySubject, user, subject);
 		while (results.next()) {
 			Card card = mapRowToCard(results);
 			cards.add(card);
-		}
-				 
-				
+		}		 				
 		return cards;
 	}
 
 	@Override
-	public List<Card> getCardsByKeyword(String keyword) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Card> getCardsByKeyword(String user, String keyword) {
+		List<Card> cards = new ArrayList<>();
+		
+		String sqlGetCardsByKeyword = "";
+		
+		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlGetCardsByKeyword, user, keyword);
+		while (results.next()) {
+			Card card = mapRowToCard(results);
+			cards.add(card);
+		}
+		
+		return cards;
+	}
+	
+	@Override
+	public boolean createCard(String question, String answer, String subject, String[] keywords) {
+		return true;
 	}
 	
 	private Card mapRowToCard(SqlRowSet rs) {
@@ -79,8 +93,7 @@ public class JDBCCardDAO implements CardDAO {
 		card.setAnswer(rs.getString("answer"));
 		card.setSubject(rs.getString("subject_name"));
 		
-		return card;
-	
+		return card;	
 	}
 
 }
