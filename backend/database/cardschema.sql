@@ -46,17 +46,6 @@ CREATE TABLE deck_cards (
 	CONSTRAINT pk_deck_id_user_id_card_id PRIMARY KEY (deck_id, user_id, card_id)
 );
 
-INSERT INTO users (username,password_hash,role) VALUES ('user','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
-INSERT INTO users (username,password_hash,role) VALUES ('admin','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_ADMIN');
-
-INSERT INTO subject (subject_name) VALUES ('Test');
-
-INSERT INTO cards (question, answer, subject_id, creator_id) 
-VALUES
-('What color is the sky?', 'blue', 1, 1),
-('What is the name of this app?', 'TEHoot', 1, 1);
-
-
 
 ROLLBACK;
 
