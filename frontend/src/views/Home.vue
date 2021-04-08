@@ -6,9 +6,6 @@
     <router-link v-bind:to="{ name: 'viewDecks' }">View Saved Decks</router-link><br/>
     <router-link v-bind:to="{ name: 'studySession' }">Start a study session</router-link><br/>
     <router-link v-bind:to="{ name: 'viewCards' }">View All Cards</router-link>
-    
-
-   
     <div v-for="card in cards" v-bind:key = "card.id">
     <div v-if= "questionUp"  class="boxed">
       {{card.question}}
@@ -20,7 +17,6 @@
     </div>
   </div>
 </template>
-
 <script>
 import cardService from '@/services/CardService';
 export default {
@@ -39,19 +35,17 @@ export default {
   },
   methods:{
     showAnswer(){
-      questionUp = false;
+      this.questionUp = false;
      // answerUp = true;
     }
   },
   created(){
     cardService.getCards().then(response =>{
       this.cards = response.data;
-
     })
   }
 };
 </script>
-
 <style>
 .boxed {
   width:60%;
@@ -62,10 +56,7 @@ export default {
   margin:auto;
   border: 1px solid green ;
 }
-
 #welcome{
   font-size: 20px;
 }
 </style>
-
-

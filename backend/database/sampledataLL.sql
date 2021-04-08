@@ -1,6 +1,6 @@
 BEGIN TRANSACTION;
 
-NSERT INTO subject (subject_name) VALUES ('Test');
+INSERT INTO subject (subject_name) VALUES ('Test');
 
 INSERT INTO cards (question, answer, subject_id, creator_id) 
 VALUES
@@ -21,3 +21,6 @@ JOIN subject USING (subject_id) WHERE creator_id = 3;
 COMMIT TRANSACTION;
 
 BEGIN TRANSACTION;
+
+
+ROLLBACK
