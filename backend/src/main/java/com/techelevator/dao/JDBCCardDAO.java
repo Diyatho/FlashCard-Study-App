@@ -102,24 +102,44 @@ public class JDBCCardDAO implements CardDAO {
 	@Override
 	public boolean createCard(String question, String answer, String subject, String user) {
 		boolean cardCreated = false;
+//		boolean subjectExists = true;
+//		boolean subjectCreated = false;
+//		
+//		String sqlCheckSubject = "SELECT subject_name FROM subject" +
+//				" WHERE subject_name = ?;";
+//		if (sqlCheckSubject == null) {
+//			subjectExists = false;
+//		}
+//			if (!subjectExists) {
+//				String sqlAddSubject = "INSERT INTO subject (subject_name) VALUES (?);";
+//				subjectCreated = jdbcTemplate.update(sqlAddSubject, subject) == 1;
+//			}
+//		}
+		//if (!subject exists) {
+		// sql add subject
+		//else
 		
 		
-		String sqlAddCard = "BEGIN TRANSACTION; INSERT INTO cards" + 
+		String sqlAddCard = "INSERT INTO cards" + 
 				" (question, answer, subject_id, creator_id)" + 
 				" VALUES (?, ?, " +
 				" (SELECT subject_id FROM subject WHERE subject_name = ?)," +
-				" (SELECT user_id FROM users WHERE username = '?'));";
+				" (SELECT user_id FROM users WHERE username = ? ));";
 
 		
 		cardCreated = jdbcTemplate.update(sqlAddCard, question, answer, subject, user) == 1;
 		
 		return cardCreated;
+		
+
+		
 	}
 	
 	@Override
 	public boolean addKeywordsToCard(String user, String answer, String keywords) {
 		return false;
 	}
+	
 	
 	private Card mapRowToCard(SqlRowSet rs) {
 		Card card = new Card();
