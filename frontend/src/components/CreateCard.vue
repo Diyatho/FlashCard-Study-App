@@ -6,6 +6,7 @@
       <div class="status-message error" v-show="formAddedFailure">{{errorMsg}}</div>
 
      <div class="form-element">
+       {{deckName}}
         <label for="question">Question:</label>
         <input id="question" type="text" v-model="newCard.question" />
       </div>
@@ -36,9 +37,13 @@
 import cardService from '@/services/CardService';
 export default {
     name:"create-card",
+    props: ["deckName"],
     data(){
         return{
-            newCard:{},
+            newCard:{
+              deckName:this.deckName
+              
+            },
             formAddedSuccess: false, //controls display of success status message
             formAddedFailure: false, //controls display of error status message
             errorMsg: ''
@@ -46,6 +51,7 @@ export default {
     },
     methods:{
     addNewCard() {
+      this.newCard.deckName = this.deckName;
      cardService.createCard(this.newCard).then(response => {
          if (response.status === 201 || response.status === 200) { //201 = "Created"
          this.formAddedSuccess = true; //display success message
@@ -75,7 +81,7 @@ export default {
       this.resetForm();
     },
     resetForm() {
-      this.newReview = {};
+      this.newCard = {};
     }
   }
     
