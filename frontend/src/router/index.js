@@ -6,8 +6,7 @@ import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import store from '../store/index'
 import Explore from '../views/Explore.vue'
-import CreateCard from '../views/CreateCard.vue'
-import ViewDecks from '../views/ViewDecks.vue'
+import CreateDeck from '../views/CreateDeck.vue'
 import StudySession from '../views/StudySession.vue'
 import ViewCards from '../views/ViewCards.vue'
 
@@ -67,17 +66,9 @@ const router = new Router({
       }
     },
     {
-      path: "/user/cards/create",
-      name: "createCard",
-      component: CreateCard,
-      meta: {
-        requiresAuth: true
-      }
-    },
-    {
-      path: "/user/decks/view",
-      name: "viewDecks",
-      component: ViewDecks,
+      path: "/user/decks/create",
+      name: "createDeck",
+      component: CreateDeck,
       meta: {
         requiresAuth: true
       }

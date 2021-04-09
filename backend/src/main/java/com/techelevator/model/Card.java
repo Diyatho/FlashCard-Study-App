@@ -9,6 +9,7 @@ public class Card {
 	private String question;
 	private String answer;
 	private String subject;
+	private String cardCreator;
 	private boolean isCorrect;
 	private List<String> keywords = new ArrayList<>();
 	
@@ -42,6 +43,12 @@ public class Card {
 	}
 	public void setSubject(String subject) {
 		this.subject = subject;
+	}
+	public String getCardCreator() {
+		return cardCreator;
+	}
+	public void setCardCreator(String cardCreator) {
+		this.cardCreator = cardCreator;
 	}
 	public boolean isCorrect() {
 		return isCorrect;
