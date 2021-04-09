@@ -7,7 +7,6 @@ import Register from '../views/Register.vue'
 import store from '../store/index'
 import Explore from '../views/Explore.vue'
 import CreateDeck from '../views/CreateDeck.vue'
-import ViewDecks from '../views/ViewDecks.vue'
 import StudySession from '../views/StudySession.vue'
 import ViewCards from '../views/ViewCards.vue'
 
@@ -70,14 +69,6 @@ const router = new Router({
       path: "/user/decks/create",
       name: "createDeck",
       component: CreateDeck,
-      meta: {
-        requiresAuth: true
-      }
-    },
-    {
-      path: "/user/decks/view",
-      name: "viewDecks",
-      component: ViewDecks,
       meta: {
         requiresAuth: true
       }
