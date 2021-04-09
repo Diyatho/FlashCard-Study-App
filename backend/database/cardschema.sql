@@ -34,18 +34,16 @@ CREATE TABLE card_keyword (
 
 CREATE TABLE deck (
 	deck_id serial PRIMARY KEY,
-	deck_name varchar (50) NOT NULL
+	deck_name varchar (50) NOT NULL,
+	creator_id integer REFERENCES users (user_id)
 );
 
 CREATE TABLE deck_cards (
 	deck_id integer REFERENCES deck (deck_id),
-	user_id integer REFERENCES users (user_id),
 	card_id integer REFERENCES cards (card_id),
-	answeredCorrect boolean DEFAULT false ,
 
-	CONSTRAINT pk_deck_id_user_id_card_id PRIMARY KEY (deck_id, user_id, card_id)
+	CONSTRAINT pk_deck_id_card_id PRIMARY KEY (deck_id, card_id)
 );
-
 
 ROLLBACK;
 

@@ -100,4 +100,20 @@ SELECT * FROM cards WHERE answer = 'java green';
 
 SELECT * FROM subject;
 
+SELECT subject_id, subject_name FROM subject WHERE subject_name = 'Test';
+
+INSERT INTO cards (question, answer, subject_id, creator_id)
+VALUES ('What is my name', 'Lindsay', (SELECT subject_id FROM subject WHERE subject_name = 'Test'), (SELECT user_id FROM users WHERE username = 'LindsayL'));
+
+BEGIN TRANSACTION;
+
+
+
+INSERT INTO deck
+(deck_name)
+VALUES
+('Tech Interview');
+
+SELECT * FROM deck;
+
 ROLLBACK;

@@ -14,10 +14,12 @@ public interface CardDAO {
 	
 	List<Card> getCardsByKeyword(String user, String keyword);
 	
-	boolean createSubject(String subject);
+	void createSubject(String subject);
 
-	boolean createCard(String question, String answer, String subject, String user, String deckName);
+	void createCard(String question, String answer, String subject, String user, String deckName);
 	
 	boolean addKeywordsToCard(String user, String answer, String keywords);
+	
+	boolean addCardToDeck(String deckName, int cardId);
 
 }

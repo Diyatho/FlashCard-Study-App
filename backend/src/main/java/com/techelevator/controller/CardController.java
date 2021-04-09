@@ -44,9 +44,9 @@ public class CardController {
 		return dao.getCardsByKeyword(principal.getName(), keyword);
 	}
 	
-	@RequestMapping(path = "/user/cards/create", method =RequestMethod.POST)
-	public boolean createCard(@RequestBody Card card, String deckName, Principal principal) {
-		return dao.createCard(card.getQuestion(), card.getAnswer(), card.getSubject(), deckName, principal.getName());
+	@RequestMapping(path = "/user/cards/create", method = RequestMethod.POST)
+	public void createCard(@RequestBody Card card, String deckName, Principal principal) {
+		dao.createCard(card.getQuestion(), card.getAnswer(), card.getSubject(), deckName, principal.getName());
 
 	}
 	
