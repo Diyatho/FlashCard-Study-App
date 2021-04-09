@@ -2,7 +2,7 @@
 
   <div id="login" class="text-center">
 
-    <img src="@/assets/TEHOOT.png" alt="Tehoot logo">
+    <img id="textlogo" src="@/assets/TEHOOT.png" alt="Tehoot logo">
   
     <!--Test Logo-->
    
@@ -45,7 +45,7 @@
       <br>
 
       <router-link :to="{ name: 'register' }">Need an account?</router-link><br>
-      <button type="submit">Sign in</button>
+      <button type="submit">Sign in</button><br>
 
       <router-link :to="{ name: 'explore' }">Explore!</router-link>
 
@@ -103,19 +103,20 @@ body {
 background: #7DDFA4;
 text-align: center;
 font-family: Helvetica, Arial, sans-serif;
+justify-content: center;
 }
 
 h3{
   color: White;
 }
 
-img {
+#textlogo {
 filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.1));
-width: 50%;
+width: 600px;
 }
 
 #login{
-  margin: auto;
+  margin: inherit;
 }
 
 #Owl{
@@ -124,11 +125,12 @@ width: 50%;
 }
 
 form {
-  font-size: 20px;
-  padding: 15px;
+  justify-self: center;
+  text-align: center;
+  width:500px;
   background: rgb(211, 211, 211);
-  border-style: solid;
-  
+  border: 3px solid #000000;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .form-control{
