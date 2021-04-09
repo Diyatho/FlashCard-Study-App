@@ -5,8 +5,8 @@
             <input id="question" type="text" v-model="deckName" />
         </div>
 
-        <button class="addCards" v-if= "!showForm" v-on:click= "showForm = true">Add cards to deck</button>
-        <create-card v-if= "showForm"/>
+        <button class="addCards" v-if= "!showForm" v-on:click= "createNewDeck">Add cards to deck</button>
+        <create-card v-if= "showForm" v-bind:deckName = "deckName"/>
         
 
 
@@ -16,6 +16,7 @@
 
 <script>
 import CreateCard from '@/components/CreateCard.vue'
+import cardService from '@/services/CardService';
 
 
 export default {
@@ -27,6 +28,14 @@ export default {
         return{
             showForm:false,
             deckName:''
+        }
+    },
+    methods:{
+        createNewDeck(){
+            this.showForm = true;
+            cardService.createDeck(this.deckName).then(response => {
+                console.log(response);
+            });
         }
     }
     
