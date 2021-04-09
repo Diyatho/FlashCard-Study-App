@@ -4,6 +4,7 @@
     <img src="@/assets/TEHOOT.png" alt="logo">
 
       <h1 class="h3 mb-3 font-weight-normal">Create Account</h1>
+    <div class="form">
     <form class="form-register" @submit.prevent="register">
       <div class="alert alert-danger" role="alert" v-if="registrationErrors">
         {{ registrationErrorMsg }}
@@ -36,11 +37,11 @@
         v-model="user.confirmPassword"
         required
       /><br>
-      <router-link :to="{ name: 'login' }">Have an account?</router-link><br>
-      <button class="btn btn-lg btn-primary btn-block" type="submit">
-        Create Account
-      </button>
+      
+       <button a href="#" class=create type="submit">Create Account</button><br>
+        <router-link :to="{ name: 'login' }">Have an account?</router-link><br>
     </form>
+    </div>
     
     <img id="Owl" src="@/assets/TEHOOTOwl.png" alt="Owl">
     
@@ -112,7 +113,11 @@ img{
   width: 275px;
   margin: 15px;
 }
-
+div.form
+{
+    display: block;
+    text-align: center;
+}
 form {
   font-size: 20px;
   padding: 15px;
@@ -124,6 +129,32 @@ form {
 button{
   font-size: 20px;
   margin: 7px;
+}
+.create {
+  -moz-box-shadow:inset 0px -1px 3px 0px #91b8b3;
+	-webkit-box-shadow:inset 0px -1px 3px 0px #91b8b3;
+	box-shadow:inset 0px -1px 3px 0px #91b8b3;
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ffff00), color-stop(1, #ffff00));
+	background:-moz-linear-gradient(top, #ffff00 5%, #ffff00 100%);
+	background:-webkit-linear-gradient(top, #ffff00 5%, #ffff00 100%);
+	background:-o-linear-gradient(top, #ffff00 5%, #ffff00 100%);
+	background:-ms-linear-gradient(top, #ffff00 5%, #ffff00 100%);
+	background:linear-gradient(to bottom, #ffff00 5%, #ffff00 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffff00', endColorstr='#ffff00',GradientType=0);
+	background-color:#ffff00;
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+	border-radius:5px;
+	border:1px solid #566963;
+	display:inline-block;
+	cursor:pointer;
+	color:#00000b;
+	font-family:Arial;
+	font-size:20px;
+	font-weight:bold;
+	padding:11px 23px;
+	text-decoration:none;
+	text-shadow:0px -1px 0px #2b665e;
 }
 
 </style>
