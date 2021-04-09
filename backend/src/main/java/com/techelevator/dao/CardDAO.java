@@ -16,7 +16,7 @@ public interface CardDAO {
 	
 	boolean createSubject(String subject);
 
-	boolean createCard(String question, String answer, String subject, String user);
+	boolean createCard(String question, String answer, String subject, String user, String deckName);
 	
 	boolean addKeywordsToCard(String user, String answer, String keywords);
 
