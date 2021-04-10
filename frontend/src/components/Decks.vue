@@ -4,8 +4,8 @@
             <div
                 class = "deck" 
                 v-for= "deck in decks"
-                v-bind:key = "deck.deck_id">
-                <router-link v-bind:to="{ name: 'deck', params: { id: deck_id } }">
+                v-bind:key = "deck.deckId">
+                <router-link v-bind:to="{ name: 'deck', params: { id: deckId } }">
                     {{ deck.deckName }}
                 </router-link>
             </div>

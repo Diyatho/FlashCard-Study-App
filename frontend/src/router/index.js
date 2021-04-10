@@ -9,6 +9,7 @@ import Explore from '../views/Explore.vue'
 import CreateDeck from '../views/CreateDeck.vue'
 import StudySession from '../views/StudySession.vue'
 import ViewCards from '../views/ViewCards.vue'
+import Deck from '../views/Deck.vue'
 
 Vue.use(Router)
 
@@ -73,6 +74,15 @@ const router = new Router({
         requiresAuth: true
       }
     },
+    {
+      path: "/user/decks/:id",
+      name: "deck",
+      component: Deck,
+      meta: {
+        requiresAuth: true
+      }
+    },
+
     {
       path: "/user/studySession",
       name: "studySession",
