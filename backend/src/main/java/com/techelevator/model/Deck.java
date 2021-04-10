@@ -7,6 +7,7 @@ public class Deck {
 	
 	private int deckId;
 	private String deckName;
+	private String deckDescription;
 	private int deckCreatorId;
 	private List<Card> cards = new ArrayList<>();
 	
@@ -22,6 +23,13 @@ public class Deck {
 	}
 	public void setDeckName(String deckName) {
 		this.deckName = deckName;
+	}
+	
+	public String getDeckDescription() {
+		return deckDescription;
+	}
+	public void setDeckDescription(String deckDescription) {
+		this.deckDescription = deckDescription;
 	}
 	public int getDeckCreatorId() {
 		return deckCreatorId;
