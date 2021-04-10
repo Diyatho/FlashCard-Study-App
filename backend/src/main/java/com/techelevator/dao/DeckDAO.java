@@ -10,6 +10,6 @@ public interface DeckDAO {
 	
 	List<Deck> getAllDecksByUser(String user);
 
-	
+	List<Deck> getAllDecksWithCards(String user);
 
 }

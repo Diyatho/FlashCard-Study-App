@@ -28,9 +28,14 @@ public class DeckController {
 		return dao.initializeDeck(deck.getDeckName()); //will need to add getDeckDescription here
 	}
 	
+//	@RequestMapping(path = "/user/decks", method = RequestMethod.GET)
+//	public List<Deck> getAllDeckByUser(Principal principal) {
+//		return dao.getAllDecksByUser(principal.getName());
+//	}
+	
 	@RequestMapping(path = "/user/decks", method = RequestMethod.GET)
-	public List<Deck> getAllDeckByUser(Principal principal) {
-		return dao.getAllDecksByUser(principal.getName());
+	public List<Deck> getAllDecksWithCards(Principal principal) {
+		return dao.getAllDecksWithCards(principal.getName());
 	}
 
 }
