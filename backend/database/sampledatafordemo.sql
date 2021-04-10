@@ -34,8 +34,6 @@ VALUES
 ('What does MVC stand for?', 'Model View Controller', (SELECT subject_id FROM subject WHERE subject_name = 'Technology'), 1),
 ('Define REST API', 'REST API is a simplified and standardized communication from client to server, scaleable and stateless, high performance,', (SELECT subject_id FROM subject WHERE subject_name = 'Technology'), 1),
 /*Bad Jokes*/
-
-
 ('What rock group has four men that don''t sing?','Mount Rushmore', (SELECT subject_id FROM subject WHERE subject_name = 'Jokes'), 1),
 ('Why do melons have weddings?', 'Because they cantaloupe!', (SELECT subject_id FROM subject WHERE subject_name = 'Jokes'), 1),
 ('What''s brown and sticky?', 'A stick!', (SELECT subject_id FROM subject WHERE subject_name = 'Jokes'), 1),
@@ -47,9 +45,6 @@ VALUES
 ('After an unsuccessful harvest, why did the farmer decide to try a career in music?', 'Because he had a ton of sick beets.', (SELECT subject_id FROM subject WHERE subject_name = 'Jokes'), 1),
 ('What do you call a fake noodle?', 'An Impasta!', (SELECT subject_id FROM subject WHERE subject_name = 'Jokes'), 1);
 /*Spanish Vocab Cards*/
-INSERT INTO cards
-(question, answer, subject_id, creator_id)
-VALUES
 ('cat', 'el gato', (SELECT subject_id FROM subject WHERE subject_name = 'Spanish'), 1),
 ('tree','el àrbol', (SELECT subject_id FROM subject WHERE subject_name = 'Spanish'), 1),
 ('cheese', 'el queso', (SELECT subject_id FROM subject WHERE subject_name = 'Spanish'), 1),
@@ -67,9 +62,6 @@ INSERT INTO deck_cards
 VALUES
 /*Tech Terms*/
 (1, 1),
-INSERT INTO deck_cards
-(deck_id, card_id)
-VALUES
 (1, 2),
 (1, 3),
 (1, 4),
@@ -80,9 +72,6 @@ VALUES
 (1, 9),
 (1, 10),
 /*Bad Jokes*/
-INSERT INTO deck_cards
-(deck_id, card_id)
-VALUES
 (2, 11),
 (2, 12),
 (2, 13),
