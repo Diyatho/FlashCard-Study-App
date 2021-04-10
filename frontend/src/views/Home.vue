@@ -1,10 +1,9 @@
 <template>
   <div class="home">
     <img src="@/assets/TEHOOT.png" alt="logo">
-    <h1>Home</h1>
     <p id = "welcome">Welcome {{username}}!!</p>
 
-    <decks/>
+    
 <div class="form">
   <form class="form-options">
     
@@ -17,19 +16,22 @@
   </form>
   </div>
    <br>
-   <img id="Owl" src="@/assets/TEHOOTOwl.png" alt="Owl">    
+   <!--<img id="Owl" src="@/assets/TEHOOTOwl.png" alt="Owl"> -->
+   <decks/>   
   </div>
 </template>
 
 <script>
 
 import Decks from '@/components/Decks.vue';
+import Card from '@/components/Card.vue';
 
 
 export default {
   name: "home",
   components:{
-    Decks
+    Decks,
+    Card
 
   },
   data(){
@@ -80,6 +82,10 @@ form {
   padding: 5px;
 }
 
+#welcome{
+  font-size: 30px;
+  text-align: left;
+}
 button{
   font-size: 20px;
   margin: 7px;
