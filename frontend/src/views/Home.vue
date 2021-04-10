@@ -7,12 +7,13 @@
     <decks/>
 <div class="form">
   <form class="form-options">
-     <button router-link v-bind:to="{ name: 'createDeck' }" class=createADeck type="submit">Create A Deck</button><br>
-  
+    
    <router-link class=createADeck v-bind:to="{ name: 'createDeck' }" tag="button">Create A Deck</router-link>
     <!--<router-link v-bind:to="{ name: 'viewDecks' }">View Saved Decks</router-link><br/>-->
-    <router-link v-bind:to="{ name: 'studySession' }">Start a study session</router-link><br/>
-    <router-link v-bind:to="{ name: 'viewCards' }">View All Cards</router-link>
+   <br>
+    <router-link class=studySession v-bind:to="{ name: 'studySession' }" tag="button">Start A Study Session</router-link>
+    <br>
+<router-link class=viewCards v-bind:to="{ name: 'viewCards' }" tag="button">View All Cards</router-link>
   </form>
   </div>
    <br>
@@ -109,6 +110,59 @@ button{
 	text-decoration:none;
 /* text-shadow:0px -1px 0px #2b665e; */
 }
+.studySession {
+  -moz-box-shadow:inset 0px -1px 3px 0px #91b8b3;
+	-webkit-box-shadow:inset 0px -1px 3px 0px #91b8b3;
+	box-shadow:inset 0px -1px 3px 0px #91b8b3;
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ffff00), color-stop(1, #ffff00));
+	background:-moz-linear-gradient(top, #ffff00 5%, #ffff00 100%);
+	background:-webkit-linear-gradient(top, #ffff00 5%, #ffff00 100%);
+	background:-o-linear-gradient(top, #ffff00 5%, #ffff00 100%);
+	background:-ms-linear-gradient(top, #ffff00 5%, #ffff00 100%);
+	background:linear-gradient(to bottom, #ffff00 5%, #ffff00 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffff00', endColorstr='#ffff00',GradientType=0);
+	background-color:#ffff00;
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+	border-radius:5px;
+	border:1px solid #566963;
+	display:inline-block;
+	cursor:pointer;
+	color:#00000b;
+	font-family:Arial;
+	font-size:20px;
+	font-weight:bold;
+	padding:11px 23px;
+	text-decoration:none;
+	/* text-shadow:0px -1px 0px #2b665e; */
+}
+.viewCards {
+  -moz-box-shadow:inset 0px -1px 3px 0px #91b8b3;
+	-webkit-box-shadow:inset 0px -1px 3px 0px #91b8b3;
+	box-shadow:inset 0px -1px 3px 0px #91b8b3;
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ffff00), color-stop(1, #ffff00));
+	background:-moz-linear-gradient(top, #80DA71 5%, #80DA71 100%);
+	background:-webkit-linear-gradient(top, #80DA71 5%, #80DA71 100%);
+	background:-o-linear-gradient(top, #80DA71 5%, #80DA71 100%);
+	background:-ms-linear-gradient(top, #80DA71 5%, #80DA71 100%);
+	background:linear-gradient(to bottom, #80DA71 5%, #80DA71 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffff00', endColorstr='#ffff00',GradientType=0);
+	background-color:#80DA71;
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+	border-radius:5px;
+	border:1px solid #566963;
+	display:inline-block;
+	cursor:pointer;
+	color:#00000b;
+	font-family:Arial;
+	font-size:20px;
+	font-weight:bold;
+	padding:11px 23px;
+	text-decoration:none;
+/* text-shadow:0px -1px 0px #2b665e; */
+}
+
 </style>
 
 
