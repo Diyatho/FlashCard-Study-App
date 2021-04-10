@@ -9,7 +9,7 @@ DROP TABLE IF EXISTS subject;
 
 CREATE TABLE subject (
 	subject_id serial PRIMARY KEY,
-	subject_name varchar (50) NOT NULL
+	subject_name varchar (50)
 );
 
 CREATE TABLE cards (
@@ -35,6 +35,7 @@ CREATE TABLE card_keyword (
 CREATE TABLE deck (
 	deck_id serial PRIMARY KEY,
 	deck_name varchar (50) NOT NULL,
+	description varchar (500) ,
 	creator_id integer REFERENCES users (user_id)
 );
 
