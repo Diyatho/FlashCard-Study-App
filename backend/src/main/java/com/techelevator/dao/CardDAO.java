@@ -8,6 +8,8 @@ public interface CardDAO {
 	
 	List<Card> getAllCards(String user);
 	
+	List<Card> getCardsByDeck(String deckName, String user);
+	
 	Card getCardById(String user, int cardId);
 	
 	List<Card> getCardsBySubject(String user, String subject);
@@ -16,10 +18,9 @@ public interface CardDAO {
 	
 	void createSubject(String subject);
 
-	void createCard(String question, String answer, String subject, String user, String deckName);
+	void createCard(String question, String answer, String subject, String deckName, String user);
 	
 	boolean addKeywordsToCard(String user, String answer, String keywords);
 	
-	boolean addCardToDeck(String deckName, int cardId);
 
 }
