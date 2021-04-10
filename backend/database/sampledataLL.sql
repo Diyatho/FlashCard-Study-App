@@ -81,7 +81,9 @@ VALUES
 INSERT INTO cards
 (question, answer, subject_id, creator_id)
 VALUES
-('What color is the best color?', 'java green', (SELECT subject_id FROM subject WHERE subject_name = 'Color'), (SELECT user_id FROM users WHERE username = 'LindsayL'));
+('What color is the best color?', 'java green', 
+(SELECT subject_id FROM subject WHERE subject_name = 'Color'), 
+(SELECT user_id FROM users WHERE username = 'LindsayL'));
 
 /*addKeyword */
 INSERT INTO keyword
@@ -100,4 +102,39 @@ SELECT * FROM cards WHERE answer = 'java green';
 
 SELECT * FROM subject;
 
+SELECT subject_id, subject_name FROM subject WHERE subject_name = 'Test';
+
+INSERT INTO cards (question, answer, subject_id, creator_id)
+VALUES ('What is my name', 'Lindsay', (SELECT subject_id FROM subject WHERE subject_name = 'Test'), (SELECT user_id FROM users WHERE username = 'LindsayL'));
+
+BEGIN TRANSACTION;
+
+INSERT INTO deck_cards
+(deck_id, card_id)
+VALUES
+((SELECT deck_id FROM deck WHERE deck_name = 'Movies'), 27);
+
+SELECT * FROM deck_cards;
+
+INSERT INTO deck (deck_name, creator_id) VALUES ('Colors', 3);
+
+
+SELECT card_id
+FROM cards
+JOIN subject USING (subject_id)
+WHERE question = 'What color is the grass?' AND answer = 'green' AND subject_id = 1 AND creator_id = 3;
+
+
+BEGIN TRANSACTION;
+
+INSERT INTO cards
+(question, answer, subject_id, creator_id) 
+VALUES 
+('Where do pears grow?', 'Pear Tree', 
+(SELECT subject_id FROM subject WHERE subject_name = 'Tree'), 
+(SELECT user_id FROM users WHERE username = 'LindsayL' )) RETURNING card_id;
+
+
 ROLLBACK;
+
+COMMIT TRANSACTION;
