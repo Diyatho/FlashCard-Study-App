@@ -11,7 +11,7 @@
     <router-link v-bind:to="{ name: 'viewCards' }">View All Cards</router-link>
 
     <decks/>
-    <card/>
+    <!--<card/>-->
       
   </div>
 </template>

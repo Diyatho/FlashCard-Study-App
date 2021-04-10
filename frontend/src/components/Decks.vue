@@ -41,4 +41,13 @@ export default {
         align-items: center;
     }
 
+    .deck {
+  background-color: #f7fafc;
+  border-radius: 10px;
+  padding: 40px;
+  flex: 1;
+  margin: 0 20px;
+  text-align: center;
+}
+
 </style>
