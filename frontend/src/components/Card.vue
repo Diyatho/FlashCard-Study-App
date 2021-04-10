@@ -1,6 +1,7 @@
 <template>
     <div>
-        <div class= "card" v-for="card in cards" v-bind:key = "card.id">
+      <div class = "container">
+        <div v-for="card in cards" v-bind:key = "card.id">
             <div v-if= "questionUp"  class="boxed">
              {{card.question}}
              <button v-on:click = "questionUp = false">Show Answer</button>
@@ -9,6 +10,7 @@
                 {{card.answer}}
             </div>
         </div>
+      </div>
 
     </div>
     
@@ -37,6 +39,11 @@ export default {
 </script>
 
 <style>
+    .container{
+      display:flex; 
+      justify-content: space-evenly;
+      align-items: center;
+    }
     .boxed {
         width:60%;
         text-align: center;

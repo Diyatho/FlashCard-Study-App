@@ -1,8 +1,12 @@
 <template>
     <div>
         <div class = "deckName">
-            <label for="question">Name of the Deck: </label>
-            <input id="question" type="text" v-model="deckName" />
+            <label for="deckName">Name of the Deck: </label>
+            <input id="deckName" type="text" v-model="deckName" />
+        </div>
+        <div class = "deckDescription">
+            <label for="deckDescription">Description: </label>
+            <textarea id="deckDescription" name="deckDescription" rows="4" cols="30"></textarea>
         </div>
 
         <button class="addCards" v-if= "!showForm" v-on:click= "createNewDeck">Add cards to deck</button>
