@@ -20,22 +20,27 @@ public class JDBCDeckDAO implements DeckDAO {
 	}
 	//used
 	@Override
-	public boolean initializeDeck(String deckName) {
-		
+	public boolean initializeDeck(String deckName, String user) {
 		boolean deckInitialized = false;
 		
-		String sqlInitDeck = "INSERT INTO deck (deck_name, creator_id) VALUES (?, 3);";
+		String sqlCheckForDeckByUser = "SELECT deck_name \n" + 
+				" FROM deck\n" + 
+				" WHERE (deck_name = ?) AND creator_id = (SELECT user_id FROM users WHERE username = ?);";
+		SqlRowSet deckRow = jdbcTemplate.queryForRowSet(sqlCheckForDeckByUser, deckName, user);
 		
-		deckInitialized = jdbcTemplate.update(sqlInitDeck, deckName) == 1; 
-		
-		return deckInitialized;	
+		if(deckRow.next() == false) {
+			String sqlInitDeck = "INSERT INTO deck (deck_name, creator_id) VALUES (?, (SELECT user_id FROM users WHERE username = ?);";
+			deckInitialized = jdbcTemplate.update(sqlInitDeck, deckName, user) == 1; 
+			return deckInitialized;	
+		} 
+		return deckInitialized;
 	}
 	//used
 	@Override
 	public List<Deck> getAllDecksByUser(String user) {
 		List<Deck> allDecks = new ArrayList<>();
 		
-		String sqlDecksByUser = "SELECT deck_id, deck_name, description, creator_id FROM deck" + 
+		String sqlDecksByUser = "SELECT deck_id, deck_name, description, (SELECT username FROM users WHERE user_id = deck.creator_id) AS deck_creator FROM deck" + 
 				" WHERE creator_id = (SELECT user_id FROM users WHERE username = ?);";
 		
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlDecksByUser, user);
@@ -45,23 +50,6 @@ public class JDBCDeckDAO implements DeckDAO {
 		}			
 		return allDecks;
 	}
-	//unused
-//	@Override
-//	public List<Card> getCardsByDeck(String deckName, String user) {
-//		List<Card> deckCards = new ArrayList<>();
-//		
-//		String sqlGetCardsByDeck = "SELECT question, answer, subject.subject_name, cards.creator_id" + 
-//				" FROM cards JOIN subject USING (subject_id) JOIN deck_cards USING (card_id)" + 
-//				" JOIN deck USING (deck_id)" + 
-//				" WHERE deck.deck_id = (SELECT deck.deck_id FROM deck WHERE deck_name = ?);";
-//		
-//		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlGetCardsByDeck, deckName, user);
-//		while (results.next()) {
-//			Card card = mapRowToDeckCard(results);
-//			deckCards.add(card);
-//		}
-//		return deckCards;
-//	}
 	
 	@Override
 	public List<Card> getCardsByDeckId(int deckId) {
@@ -80,7 +68,7 @@ public class JDBCDeckDAO implements DeckDAO {
 			deckCards.add(card);
 		}
 		return deckCards;
-	}
+	}	
 	
 	@Override
 	public List<Deck> getAllDecksWithCards(String user) {
@@ -95,33 +83,48 @@ public class JDBCDeckDAO implements DeckDAO {
 		return userDecks;
 	}
 	
+	@Override
+	public Deck getDeckByDeckId(int deckId) {
+		Deck deck = new Deck();
+		
+		String sqlGetDeckInfoById = "SELECT deck_id, deck_name, description, (SELECT username FROM users WHERE user_id = deck.creator_id) AS deck_creator FROM deck WHERE deck_id = ?;";
+		
+		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlGetDeckInfoById, deckId);
+		if (results.next()) {
+		 deck = mapRowToDeck(results);
+		}
+		List<Card> cardsInDeck = getCardsByDeckId(deck.getDeckId());
+		deck.setCards(cardsInDeck);
+		
+		return deck;
+	}
 	
-//	private List<Card> getCardsByDeck(String deckName) {
-//		List<Card> deckCards = new ArrayList<>();
-//
-//		String sqlGetCardsByDeck = "SELECT card_id, question, answer, subject.subject_name, cards.creator_id" + 
-//				" FROM cards JOIN subject USING (subject_id) JOIN deck_cards USING (card_id)" + 
-//				" JOIN deck USING (deck_id)" + 
-//				" WHERE deck.deck_id = ?;";
-//
-//				//" WHERE deck.deck_id = (SELECT deck_id FROM deck WHERE deck_name = ?);";
-//		
-//		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlGetCardsByDeck, 13);
-//		System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
-//		while (results.next()) {
-//			Card card = mapRowToDeckCard(results);
-//			deckCards.add(card);
-//		}
-//		return deckCards;
-//	}
-	
+	@Override
+	public Card getDeckCardByCardId(int cardId) {
+		Card deckCard = new Card();
+		
+		String sqlGetDeckCardById = "SELECT card_id, question, answer, subject.subject_name, (SELECT username FROM users WHERE user_id = cards.creator_id) AS card_creator, deck.deck_name\n" + 
+				 "FROM cards \n" + 
+				" JOIN subject USING (subject_id)\n" + 
+				" JOIN deck_cards USING (card_id)\n" + 
+				" JOIN deck USING (deck_id)\n" + 
+				" WHERE card_id = ?;";
+		
+		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlGetDeckCardById, cardId);
+		if (results.next()) {
+			 deckCard = mapRowToDeckCard(results);
+			}
+		
+		return deckCard;
+	}
+ 	
 	private Deck mapRowToDeck(SqlRowSet rs) {
 		Deck deck = new Deck();
 		deck.setDeckId(rs.getInt("deck_id"));
 		deck.setDeckName(rs.getString("deck_name"));
 		deck.setDeckDescription(rs.getString("description"));
-		deck.setDeckCreatorId(rs.getInt("creator_id"));
-		
+		deck.setDeckCreator(rs.getString("deck_creator"));
+
 		return deck;		
 	}
 	
