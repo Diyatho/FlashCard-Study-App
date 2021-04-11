@@ -11,6 +11,7 @@ export default{
     createDeck(deckName){
         return axios.post('/user/decks/create', {"deckName": deckName});
         },
+        
 
     getCards(){
         return axios.get('/user/cards');

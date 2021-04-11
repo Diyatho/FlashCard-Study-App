@@ -1,12 +1,11 @@
 <template>
     <div>
-        abcd
         <h1>{{ deckName }}</h1>
-        {{cards}}
         <div class = "cards">
-            <div v-for = "card in cards" v-bind:key = "card.id">
-                <p> card.question</p>
-                <card/>
+            <div v-for = "card in cards" 
+                 v-bind:key = "card.id"
+                 v-on:click="viewCardDetails(card.id)">
+                <card v-bind:card="card"/>
             </div>
         </div>
         
@@ -16,19 +15,33 @@
 
 <script>
 import deckService from '../services/DeckService';
+import Card from '../components/Card.vue'
+
 export default {
     name:"deck",
+    
+    components:{
+        Card
+    },
     data(){
         return{
             deckName:'',
-            cards:[]
+            cards:[],
+            questionUp : true,
         }
+    },
+    methods: {
+    viewCardDetails(cardID) {
+      this.$router.push(`/decks/${this.$route.params.id}/card/${cardID}`);
+    },
     },
     created() {
     deckService.getCardsByDeckId(this.$route.params.id).then(response => {
       this.deckName = response.data.deckName;
-      this.cards = response.data.cards;
+      //this.cards = response.data.cards;
+      this.cards = response.data;
     });
+
   }
 
     
