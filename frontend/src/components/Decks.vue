@@ -5,7 +5,7 @@
                 class = "deck" 
                 v-for= "deck in decks"
                 v-bind:key = "deck.deckId">
-                <router-link v-bind:to="{ name: 'deck', params: { id: deckId } }">
+                <router-link v-bind:to="{ name: 'deck', params: { id: deck.deckId } }">
                     {{ deck.deckName }}
                 </router-link>
             </div>
