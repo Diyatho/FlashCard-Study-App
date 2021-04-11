@@ -26,8 +26,8 @@ public class DeckController {
 		this.dao = deckDAO;
 	}
 	@RequestMapping(path = "/user/decks/create", method = RequestMethod.POST)	
-	public boolean initializeDeck(@RequestBody Deck deck) {
-		return dao.initializeDeck(deck.getDeckName(), deck.getDeckCreator()); //will need to add getDeckDescription here
+	public boolean initializeDeck(@RequestBody Deck deck, Principal principal) {
+		return dao.initializeDeck(deck.getDeckName(), principal.getName()); //will need to add getDeckDescription here
 	}
 	
 //	@RequestMapping(path = "/user/decks", method = RequestMethod.GET)

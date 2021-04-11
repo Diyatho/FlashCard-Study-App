@@ -22,17 +22,17 @@ public class JDBCDeckDAO implements DeckDAO {
 	@Override
 	public boolean initializeDeck(String deckName, String user) {
 		boolean deckInitialized = false;
-		
-		String sqlCheckForDeckByUser = "SELECT deck_name \n" + 
-				" FROM deck\n" + 
-				" WHERE (deck_name = ?) AND creator_id = (SELECT user_id FROM users WHERE username = ?);";
-		SqlRowSet deckRow = jdbcTemplate.queryForRowSet(sqlCheckForDeckByUser, deckName, user);
-		
-		if(deckRow.next() == false) {
-			String sqlInitDeck = "INSERT INTO deck (deck_name, creator_id) VALUES (?, (SELECT user_id FROM users WHERE username = ?);";
+//		
+//		String sqlCheckForDeckByUser = "SELECT deck_name \n" + 
+//				" FROM deck\n" + 
+//				" WHERE (deck_name = ?) AND creator_id = (SELECT user_id FROM users WHERE username = ?);";
+//		SqlRowSet deckRow = jdbcTemplate.queryForRowSet(sqlCheckForDeckByUser, deckName, user);
+//		
+//		if(deckRow.next() == false) {
+			String sqlInitDeck = "INSERT INTO deck (deck_name, creator_id) VALUES (?, (SELECT user_id FROM users WHERE username = ?));";
 			deckInitialized = jdbcTemplate.update(sqlInitDeck, deckName, user) == 1; 
-			return deckInitialized;	
-		} 
+//			return deckInitialized;	
+//		} 
 		return deckInitialized;
 	}
 	//used
