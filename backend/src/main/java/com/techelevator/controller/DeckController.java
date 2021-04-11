@@ -26,8 +26,8 @@ public class DeckController {
 		this.dao = deckDAO;
 	}
 	@RequestMapping(path = "/user/decks/create", method = RequestMethod.POST)	
-	public boolean initializeDeck(@RequestBody Deck deck) {
-		return dao.initializeDeck(deck.getDeckName()); //will need to add getDeckDescription here
+	public boolean initializeDeck(@RequestBody Deck deck, Principal principal) {
+		return dao.initializeDeck(deck.getDeckName(), principal.getName()); //will need to add getDeckDescription here
 	}
 	
 //	@RequestMapping(path = "/user/decks", method = RequestMethod.GET)
@@ -40,14 +40,24 @@ public class DeckController {
 //		return dao.getCardsByDeck(deckName, principal.getName());
 //	}
 //	
-	@RequestMapping(path = "/user/decks/{deckId}", method = RequestMethod.GET)
-	public List<Card> getCardsByDeckId(@PathVariable int deckId) {
-		return dao.getCardsByDeckId(deckId);
-	}
+//	@RequestMapping(path = "/user/decks/{deckId}", method = RequestMethod.GET)
+//	public List<Card> getCardsByDeckId(@PathVariable int deckId) {
+//		return dao.getCardsByDeckId(deckId);
+//	}
 	
 	@RequestMapping(path = "/user/decks", method = RequestMethod.GET)
 	public List<Deck> getAllDecksWithCards(Principal principal) {
 		return dao.getAllDecksWithCards(principal.getName());
 	}
+	
+	@RequestMapping(path = "/user/decks/{deckId}", method = RequestMethod.GET)
+	public Deck getDeckByDeckId(@PathVariable int deckId) {
+		return dao.getDeckByDeckId(deckId);
+	}
+	
+	@RequestMapping(path = "/user/decks/{deckId}/{cardId}", method = RequestMethod.GET)
+	public Card getDeckCardByCardId(@PathVariable int cardId) {
+		return dao.getDeckCardByCardId(cardId)
+;	}
 
 }
