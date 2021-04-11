@@ -29,10 +29,15 @@ public class CardController {
 		return dao.getAllCards(principal.getName());
 	}
 	
-	@RequestMapping(path = "user/decks/{deckName}", method = RequestMethod.GET)
-	public List<Card> getCardsByDeck(@PathVariable String deckName, Principal principal) {
-		return dao.getCardsByDeck(deckName, principal.getName());
-	}
+//	@RequestMapping(path = "/user/decks/{deckName}", method = RequestMethod.GET)
+//	public List<Card> getCardsByDeck(@PathVariable String deckName, Principal principal) {
+//		return dao.getCardsByDeck(deckName, principal.getName());
+//	}
+//	
+//	@RequestMapping(path = "/user/decks/{deckId}", method = RequestMethod.GET)
+//	public List<Card> getCardsByDeckId(@PathVariable int deckId) {
+//		return dao.getCardsByDeckId(deckId);
+//	}
 	
 	@RequestMapping(path = "/user/cards/{cardId}", method = RequestMethod.GET)
 	public Card getCardById(Principal principal, @PathVariable int cardId) {
