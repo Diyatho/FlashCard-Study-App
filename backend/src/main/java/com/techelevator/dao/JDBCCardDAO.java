@@ -35,22 +35,41 @@ public class JDBCCardDAO implements CardDAO {
 		
 		return allCards;
 	}
-	@Override
-	public List<Card> getCardsByDeck(String deckName, String user) {
-		List<Card> deckCards = new ArrayList<>();
-		
-		String sqlGetCardsByDeck = "SELECT question, answer, subject.subject_name, cards.creator_id" + 
-				" FROM cards JOIN subject USING (subject_id) JOIN deck_cards USING (card_id)" + 
-				" JOIN deck USING (deck_id)" + 
-				" WHERE deck.deck_id = (SELECT deck.deck_id FROM deck WHERE deck_name = ?);";
-		
-		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlGetCardsByDeck, deckName, user);
-		while (results.next()) {
-			Card card = mapRowToCard(results);
-			deckCards.add(card);
-		}
-		return deckCards;
-	}
+//	@Override
+//	public List<Card> getCardsByDeck(String deckName, String user) {
+//		List<Card> deckCards = new ArrayList<>();
+//		
+//		String sqlGetCardsByDeck = "SELECT question, answer, subject.subject_name, cards.creator_id" + 
+//				" FROM cards JOIN subject USING (subject_id) JOIN deck_cards USING (card_id)" + 
+//				" JOIN deck USING (deck_id)" + 
+//				" WHERE deck.deck_id = (SELECT deck.deck_id FROM deck WHERE deck_name = ?);";
+//		
+//		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlGetCardsByDeck, deckName, user);
+//		while (results.next()) {
+//			Card card = mapRowToCard(results);
+//			deckCards.add(card);
+//		}
+//		return deckCards;
+//	}
+//	
+//	@Override
+//	public List<Card> getCardsByDeckId(int deckId) {
+//		List<Card> deckCards = new ArrayList<>();
+//		
+//		String sqlGetCardsByDeckId = "SELECT card_id, question, answer, subject.subject_name, cards.creator_id" + 
+//				" FROM cards" + 
+//				" JOIN subject USING (subject_id)" + 
+//				" JOIN deck_cards USING (card_id)" + 
+//				" JOIN deck USING (deck_id)" + 
+//				" WHERE deck_id = ?;";
+//		
+//		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlGetCardsByDeckId, deckId);
+//		while (results.next()) {
+//			Card card = mapRowToCard(results);
+//			deckCards.add(card);
+//		}
+//		return deckCards;
+//	}
 
 	
 	@Override
