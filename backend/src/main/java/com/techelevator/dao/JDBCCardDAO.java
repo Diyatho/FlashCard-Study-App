@@ -109,7 +109,7 @@ public class JDBCCardDAO implements CardDAO {
 	public void createCard(String question, String answer, String subject, String deckName, String user) {
 		createSubject(subject);
 		int newCardId = intializeCard(question, answer, subject, user);
-		addCardToDeck(deckName, newCardId);
+		addCardToDeck(deckName,  user, newCardId);
 		
 	}
 
@@ -125,17 +125,14 @@ public class JDBCCardDAO implements CardDAO {
 		
 		return newCardId;
 	}
-	private void addCardToDeck(String deckName, int cardId) {
+	private void addCardToDeck(String deckName, String user, int cardId) {
 
 		
 		String sqlAddCardToDeck = "INSERT INTO deck_cards (deck_id, card_id)" + 
-				" VALUES (SELECT deck_id" + 
-				" FROM cards" + 
-				" JOIN deck_cards USING (card_id)" + 
-				" JOIN deck USING (deck_id" + 
-				" WHERE deck_name = ? AND card_id = ?), ?);";
+				" VALUES ((SELECT deck_id FROM deck WHERE deck_name = ? AND deck.creator_id = " +
+				" (SELECT user_id FROM users WHERE username = ?)), ?);";
 		
-		jdbcTemplate.update(sqlAddCardToDeck, deckName, cardId, cardId);		
+		jdbcTemplate.update(sqlAddCardToDeck, deckName, user, cardId);		
 
 	}
 //	private void addCardToDeck(String deckName, int cardId) {

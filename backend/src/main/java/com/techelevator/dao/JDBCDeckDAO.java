@@ -117,7 +117,8 @@ public class JDBCDeckDAO implements DeckDAO {
 		
 		return deckCard;
 	}
- 	
+	
+
 	private Deck mapRowToDeck(SqlRowSet rs) {
 		Deck deck = new Deck();
 		deck.setDeckId(rs.getInt("deck_id"));
