@@ -8,9 +8,7 @@ public interface CardDAO {
 	
 	List<Card> getAllCards(String user);
 	
-	List<Card> getCardsByDeck(String deckName, String user);
-	
-	Card getCardById(String user, int cardId);
+	Card getCardById(int cardId);
 	
 	List<Card> getCardsBySubject(String user, String subject);
 	

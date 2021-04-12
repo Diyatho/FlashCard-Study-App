@@ -1,14 +1,17 @@
 <template>
     <div>
-        <div class= "card" v-for="card in cards" v-bind:key = "card.id">
+      <div class = "container">
             <div v-if= "questionUp"  class="boxed">
-             {{card.question}}
+              
+              {{card.question}}
              <button v-on:click = "questionUp = false">Show Answer</button>
+             <button class = "edit" v-on:click = "edit">Edit</button>
             </div>
-            <div v-if= "!questionUp" class="boxed">
+            <div v-on:click = "questionUp = true" v-if= "!questionUp" class="boxed">
                 {{card.answer}}
             </div>
-        </div>
+        
+      </div>
 
     </div>
     
@@ -19,24 +22,35 @@
 import cardService from '@/services/CardService';
 
 export default {
+  props: ["card"],
     data(){
-    return{
-      cards: '',
-      questionUp : true,
-    }
+      return{
+       cards: '',
+       questionUp : true,
+      }
   },
+  methods:{
+    edit(){
+      
+    }
+  }
 
-    created(){
+    /*created(){
     cardService.getCards().then(response =>{
       this.cards = response.data;
 
     })
-  }
+  }*/
     
 }
 </script>
 
 <style>
+    .container{
+      display:flex; 
+      justify-content: space-evenly;
+      align-items: center;
+    }
     .boxed {
         width:60%;
         text-align: center;
