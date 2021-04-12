@@ -23,8 +23,8 @@
         <input id="keywords" type="text" v-model="newCard.keywords" />
       </div>
       <input type="submit" value="Add to deck" />
-       <input type="button" value="Cancel" v-on:click.prevent="resetForm" />
-       <input type="button" value="View Deck" v-on:click.prevent="resetForm" />
+       <input type="button" value="Cancel" v-on:click="resetForm" />
+       <input type="button" value="View Deck" v-on:click="goHome" />
 
     </form>
 
@@ -54,6 +54,7 @@ export default {
       this.newCard.deckName = this.deckName;
      cardService.createCard(this.newCard).then(response => {
          if (response.status === 201 || response.status === 200) { //201 = "Created"
+         this.formAddedFailure = false;
          this.formAddedSuccess = true; //display success message
          this.resetForm();
         }
@@ -75,13 +76,21 @@ export default {
         } else {
           this.errorMsg = "Error submitting form. Request could not be created.";
         }
-
+        this.formAddedSuccess = false;
         this.formAddedFailure = true; //display error message
         });
       this.resetForm();
     },
+
+    // clears the form
     resetForm() {
       this.newCard = {};
+    },
+
+    //takes the user back to home page
+    goHome(){
+      this.$router.push('/');
+
     }
   }
     
