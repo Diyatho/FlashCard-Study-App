@@ -3,9 +3,9 @@
 	  <div id="container">
      
        
-            <img id="logo" src="@/assets/TEHOOT.png" alt="logo" />
+            <img id="logo1" src="@/assets/TEHOOT.png" alt="logo" />
         
-        <div id="form">
+        <div id="form1">
         
             <form class="form-options">
               <router-link
@@ -26,29 +26,39 @@
         
      
       <br />
-      
-        <div id="question">What is the best color?</div>
+		
+	
+       <!-- <div id="flip3a"> -->
+            <div class="question" id="question">What is your favorite color?</div>
+            <!-- <div class="answer" id="answer">Java Green</div> -->
+        
 
         <br />
         <p id="about">
-          With TEHooT you can create <br />
-          custom flash cards to help<br />
-          you master any subject!<br />
+          Create custom flash cards! <br />
+		  <br />
+          Save decks for reference!<br />
+		  <br />
+          Have study sessions!<br />
+		  <br />
         </p>
-        <img id="Owl" src="@/assets/TEHOOTOwl.png" alt="Owl" />
+        <img id="Owl1" src="@/assets/TEHOOTOwl.png" alt="Owl" />
         <br />
-        <div id="answer">Java Green</div>
+            <div id="answer">Java Green</div> 
+          <!-- <div class="flip3b">
+            <div id="question">What is your favorite color?</div>
+        </div> -->
      
     </div>
   </body>
 </template>
 
 <style>
-#logo {
-  width: 800px;
+#logo1 {
+  width: 100%;
   grid-area: logo;
 }
-#Owl {
+#Owl1 {
   width: 275px;
   margin: 15px;
   grid-area: Owl;
@@ -79,7 +89,7 @@ button {
   -moz-border-radius: 5px;
   border-radius: 5px;
   border: 1px solid #566963;
-  /* display: inline-block; */
+  display: inline-block;
   cursor: pointer;
   color: #00000b;
   font-family: Arial;
@@ -120,7 +130,7 @@ button {
   text-decoration: none;
 }
 #about {
-  font-size: 36px;
+  font-size: 28px;
   color: #f6f6fa;
   font-family: Arial;
   text-align: left;
@@ -129,12 +139,12 @@ button {
 #question {
   width: 515px;
   height: 271px;
-  background: #bbe9fa;
+  background: #bbe9fa; 
   border: 2px solid #000000;
   box-sizing: border-box;
-  box-shadow: 10px 10px 27px -5px rgba(0, 0, 0, 0.25);
+  box-shadow: 10px 10px 27px -5px rgba(0, 0, 0, 0.25); 
   border-radius: 20px;
-  /* display: inline-block; */
+  display: inline-block; 
   cursor: pointer;
   color: #00000b;
   font-family: Arial;
@@ -170,12 +180,12 @@ button {
 #container {
   display: grid;
   grid-gap: 10px;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   /* grid-template-rows: 1fr 1fr 1fr; */
   grid-template-areas:
-  "logo logo form"
-  "question question about"
-  "Owl answer answer";
+  ". logo logo form ."
+  ". question question about ."
+  ". Owl answer answer .";
   /* align-self: left; */
  margin: 0px 50px;
 }
@@ -192,14 +202,16 @@ form {
   border-style: solid;
   
 }
-#form {
+#form1 {
   grid-area: form;
   padding: 0 10px;
-  text-align: right;
+  /* text-align: right; */
 }
 div.form {
   display: block;
-  text-align: right;
+  /* text-align: right; */
 }
+/* .flip3d {
 
+} */
 </style>
