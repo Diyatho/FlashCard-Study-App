@@ -109,32 +109,27 @@ VALUES ('What is my name', 'Lindsay', (SELECT subject_id FROM subject WHERE subj
 
 BEGIN TRANSACTION;
 
-INSERT INTO deck_cards
-(deck_id, card_id)
-VALUES
-((SELECT deck_id FROM deck WHERE deck_name = 'Movies'), 27);
-
-SELECT * FROM deck_cards;
-
-INSERT INTO deck (deck_name, creator_id) VALUES ('Colors', 3);
-
-
-SELECT card_id
+SELECT question, answer, subject.subject_name, cards.creator_id
 FROM cards
 JOIN subject USING (subject_id)
-WHERE question = 'What color is the grass?' AND answer = 'green' AND subject_id = 1 AND creator_id = 3;
+JOIN deck_cards USING (card_id)
+JOIN deck USING (deck_id)
+WHERE deck.deck_id = (SELECT deck.deck_id FROM deck WHERE deck_name = 'Banjo');
 
+"SELECT question, answer, subject.subject_name, cards.creator_id" + 
+				" FROM cards JOIN subject USING (subject_id) JOIN deck_cards USING (card_id)" + 
+				" JOIN deck USING (deck_id)" + 
+				" WHERE deck.deck_id = (SELECT deck.deck_id FROM deck WHERE deck_name = ?);";
 
-BEGIN TRANSACTION;
+SELECT deck_id, deck_name, creator_id
+FROM deck 
+WHERE creator_id = (SELECT user_id FROM users WHERE username = 'LindsayL');
 
-INSERT INTO cards
-(question, answer, subject_id, creator_id) 
-VALUES 
-('Where do pears grow?', 'Pear Tree', 
-(SELECT subject_id FROM subject WHERE subject_name = 'Tree'), 
-(SELECT user_id FROM users WHERE username = 'LindsayL' )) RETURNING card_id;
+SELECT deck_id, deck_name, creator_id FROM deck 
+WHERE creator_id = (SELECT user_id FROM users WHERE username = 'LindsayL');
+SELECT question, answer, subject.subject_name, cards.creator_id FROM cards JOIN subject USING (subject_id) JOIN deck_cards USING (card_id) JOIN deck USING (deck_id) WHERE deck.deck_id = 13;
 
-
+SELECT deck.deck_id FROM deck WHERE deck_name = 'Banjo';
 ROLLBACK;
 
 COMMIT TRANSACTION;

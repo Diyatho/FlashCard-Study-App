@@ -66,6 +66,8 @@ public class Card {
 	public String getDeckName() {
 		return deckName;
 	}
-	
+	public void setDeckName(String deckName) {
+		this.deckName = deckName;
+	}
 
 }

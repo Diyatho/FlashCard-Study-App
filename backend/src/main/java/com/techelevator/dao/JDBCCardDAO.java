@@ -35,34 +35,21 @@ public class JDBCCardDAO implements CardDAO {
 		
 		return allCards;
 	}
-	@Override
-	public List<Card> getCardsByDeck(String deckName, String user) {
-		List<Card> deckCards = new ArrayList<>();
-		
-		String sqlGetCardsByDeck = "SELECT question, answer, subject.subject_name, cards.creator_id" + 
-				" FROM cards JOIN subject USING (subject_id) JOIN deck_cards USING (card_id)" + 
-				" JOIN deck USING (deck_id)" + 
-				" WHERE deck.deck_id = (SELECT deck.deck_id FROM deck WHERE deck_name = ?);";
-		
-		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlGetCardsByDeck, deckName, user);
-		while (results.next()) {
-			Card card = mapRowToCard(results);
-			deckCards.add(card);
-		}
-		return deckCards;
-	}
 
 	
 	@Override
-	public Card getCardById(String user, int cardId) {
+	public Card getCardById(int cardId) {
 		
-		String sqlGetCardById = "SELECT question, answer, subject.subject_name FROM cards"
-				+ " JOIN subject USING (subject_id) JOIN users ON creator_id = user_id"
-				+ " WHERE users.username = ? AND card_id = ?;";
+		String sqlGetCardById = "SELECT card_id, question, answer, subject.subject_name, (SELECT username FROM users WHERE user_id = cards.creator_id) AS card_creator, deck.deck_name" +
+				" FROM cards" + 
+				" JOIN subject USING (subject_id)" +
+				" JOIN deck_cards USING (card_id)" +
+				" JOIN deck USING (deck_id)" +
+				" WHERE card_id = ?;";
 		
-		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlGetCardById, user, cardId);
+		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlGetCardById, cardId);
 		results.next();
-		Card card = mapRowToCard(results);
+		Card card = mapRowToDeckCard(results);
 		
 		return card;
 	}
@@ -160,6 +147,19 @@ public class JDBCCardDAO implements CardDAO {
 		card.setQuestion(rs.getString("question"));
 		card.setAnswer(rs.getString("answer"));
 		card.setSubject(rs.getString("subject_name"));
+		
+		return card;	
+	}
+	
+	private Card mapRowToDeckCard(SqlRowSet rs) {
+		Card card = new Card();
+		card.setId(rs.getInt("card_id"));
+		card.setQuestion(rs.getString("question"));
+		card.setAnswer(rs.getString("answer"));
+		card.setSubject(rs.getString("subject_name"));
+		card.setCardCreator(rs.getString("card_creator"));
+		card.setDeckName(rs.getString("deck_name"));
+		card.setCorrect(false);
 		
 		return card;	
 	}
