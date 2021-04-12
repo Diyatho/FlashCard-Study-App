@@ -125,21 +125,44 @@ public class JDBCCardDAO implements CardDAO {
 		
 		return newCardId;
 	}
-	
 	private void addCardToDeck(String deckName, int cardId) {
+
 		
 		String sqlAddCardToDeck = "INSERT INTO deck_cards (deck_id, card_id)" + 
-				" VALUES ((SELECT deck_id FROM deck WHERE deck_name = ?), ?);";
+				" VALUES (SELECT deck_id" + 
+				" FROM cards" + 
+				" JOIN deck_cards USING (card_id)" + 
+				" JOIN deck USING (deck_id" + 
+				" WHERE deck_name = ? AND card_id = ?), ?);";
 		
-		jdbcTemplate.update(sqlAddCardToDeck, deckName, cardId);		
+		jdbcTemplate.update(sqlAddCardToDeck, deckName, cardId, cardId);		
 
 	}
+//	private void addCardToDeck(String deckName, int cardId) {
+//
+//		
+//		String sqlAddCardToDeck = "INSERT INTO deck_cards (deck_id, card_id)" + 
+//				" VALUES ((SELECT deck_id FROM deck WHERE deck_name = ?), ?);";
+//		
+//		jdbcTemplate.update(sqlAddCardToDeck, deckName, cardId);		
+//
+//	}
 	
 	@Override
 	public boolean addKeywordsToCard(String user, String answer, String keywords) {
 		return false;
 	}
-
+	
+//	private int getCardCreatorIdByCardId(int cardId) {
+//		String sqlGetCardCreator = "SELECT creator_id FROM cards WHERE card_id = ?;";
+//		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlGetCardCreator, cardId);		
+//		while(results.next()) {
+//			
+//		}
+//		
+//		return ;
+//	}
+ 	
 	
 	private Card mapRowToCard(SqlRowSet rs) {
 		Card card = new Card();
