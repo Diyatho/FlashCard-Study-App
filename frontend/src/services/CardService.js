@@ -8,9 +8,10 @@ import axios from 'axios';
 //axios.get("http://localhost:8080/user/cards
 
 export default{
-    createDeck(deckName){
-        return axios.post('/user/decks/create', {"deckName": deckName});
+    createDeck(deckName, deckDescription){
+        return axios.post('/user/decks/create', {"deckName": deckName, "deckDescription": deckDescription});
         },
+        
 
     getCards(){
         return axios.get('/user/cards');

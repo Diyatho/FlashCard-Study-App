@@ -8,7 +8,8 @@ import store from '../store/index'
 import Explore from '../views/Explore.vue'
 import CreateDeck from '../views/CreateDeck.vue'
 import StudySession from '../views/StudySession.vue'
-import ViewCards from '../views/ViewCards.vue'
+import Deck from '../views/Deck.vue'
+import SingleCard from '../views/SingleCard.vue'
 
 Vue.use(Router)
 
@@ -74,18 +75,26 @@ const router = new Router({
       }
     },
     {
-      path: "/user/studySession",
-      name: "studySession",
-      component: StudySession,
+      path: "/user/decks/:id",
+      name: "deck",
+      component: Deck,
       meta: {
         requiresAuth: true
       }
     },
-    
     {
-      path: "/user/cards/view",
-      name: "viewCards",
-      component: ViewCards,
+      path: "/user/decks/:id/cards/:cardId",
+      name: "card",
+      component: SingleCard,
+      meta: {
+        requiresAuth: true
+      }
+    },
+
+    {
+      path: "/user/studySession",
+      name: "studySession",
+      component: StudySession,
       meta: {
         requiresAuth: true
       }

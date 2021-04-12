@@ -24,14 +24,12 @@
 <script>
 
 import Decks from '@/components/Decks.vue';
-import Card from '@/components/Card.vue';
 
 
 export default {
   name: "home",
   components:{
-    Decks,
-    Card
+    Decks
 
   },
   data(){
