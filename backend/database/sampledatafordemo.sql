@@ -41,9 +41,9 @@ VALUES
 ('What do sprinters eat before a race?', 'Nothing. They''re fast!', (SELECT subject_id FROM subject WHERE subject_name = 'Jokes'), 1),
 ('Why couldn''t the bicycle stand up by itself?', 'It was two tired!', (SELECT subject_id FROM subject WHERE subject_name = 'Jokes'), 1),
 ('Why did the scarecrow win an award?', 'Because he was outstanding in his field!', (SELECT subject_id FROM subject WHERE subject_name = 'Jokes'), 1),
-('What do Santa''s elves listen to ask they work?', 'Wrap music', (SELECT subject_id FROM subject WHERE subject_name = 'Jokes'), 1),
+('What do Santa''s elves listen to as they work?', 'Wrap music', (SELECT subject_id FROM subject WHERE subject_name = 'Jokes'), 1),
 ('After an unsuccessful harvest, why did the farmer decide to try a career in music?', 'Because he had a ton of sick beets.', (SELECT subject_id FROM subject WHERE subject_name = 'Jokes'), 1),
-('What do you call a fake noodle?', 'An Impasta!', (SELECT subject_id FROM subject WHERE subject_name = 'Jokes'), 1);
+('What do you call a fake noodle?', 'An Impasta!', (SELECT subject_id FROM subject WHERE subject_name = 'Jokes'), 1),
 /*Spanish Vocab Cards*/
 ('cat', 'el gato', (SELECT subject_id FROM subject WHERE subject_name = 'Spanish'), 1),
 ('tree','el àrbol', (SELECT subject_id FROM subject WHERE subject_name = 'Spanish'), 1),
