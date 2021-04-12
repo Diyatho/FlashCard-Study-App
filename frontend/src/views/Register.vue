@@ -121,9 +121,12 @@ div.form
 form {
   font-size: 20px;
   padding: 15px;
-  background: rgb(211, 211, 211);
   border-style: solid;
-  
+  background: #C5C5C5;
+border: 1px solid #000000;
+box-sizing: border-box;
+box-shadow: 4px 4px 2px rgba(0, 0, 0, 0.25);
+border-radius: 25px;
 }
 
 button{
