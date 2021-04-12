@@ -45,15 +45,9 @@
       />
       <br>
 
-<<<<<<< HEAD
-      <router-link :to="{ name: 'register' }">Need an account?</router-link><br>
-      <button type="submit">Sign in</button><br>
-
-=======
       
       <button a href="#" class=signIn type="submit">Sign in</button><br>
 <router-link :to="{ name: 'register' }">Need an account?</router-link><br>
->>>>>>> 5f3b64a2d55c53a0386350d2f185b12b0d4726c8
       <router-link :to="{ name: 'explore' }">Explore!</router-link>
 
 
@@ -141,10 +135,6 @@ form {
   text-align: center;
   width:500px;
   background: rgb(211, 211, 211);
-<<<<<<< HEAD
-  border: 3px solid #000000;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-=======
   border-style: solid;
   max-width: fit-content;
     display: inline-block;
@@ -152,7 +142,6 @@ form {
     margin-right: auto;
     text-align: center;
   
->>>>>>> 5f3b64a2d55c53a0386350d2f185b12b0d4726c8
 }
 
 .form-control{

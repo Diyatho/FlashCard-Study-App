@@ -9,10 +9,9 @@
     
    <router-link class=createADeck v-bind:to="{ name: 'createDeck' }" tag="button">Create A Deck</router-link>
     <!--<router-link v-bind:to="{ name: 'viewDecks' }">View Saved Decks</router-link><br/>-->
-<<<<<<< HEAD
-    <router-link v-bind:to="{ name: 'studySession' }">Start a study session</router-link><br/>
-    <router-link v-bind:to="{ name: 'viewCards' }">View All Cards</router-link>
-<<<<<<< HEAD
+
+    <!-- <router-link v-bind:to="{ name: 'studySession' }">Start a study session</router-link><br/>
+    <router-link v-bind:to="{ name: 'viewCards' }">View All Cards</router-link> -->
     <div v-for="card in cards" v-bind:key = "card.id">
     <div v-if= "questionUp"  class="boxed">
       {{card.question}}
@@ -22,10 +21,6 @@
       {{card.answer}}
     </div>
     </div>
-=======
-      
->>>>>>> e8f2c7a73a7be6876d211e12305ba36d86b48098
-=======
    <br>
     <router-link class=studySession v-bind:to="{ name: 'studySession' }" tag="button">Start A Study Session</router-link>
     <br>
@@ -35,7 +30,7 @@
    <br>
    <!--<img id="Owl" src="@/assets/TEHOOTOwl.png" alt="Owl"> -->
    <decks/>   
->>>>>>> 44b19473114fdf6890a63cc1e71fcbc74303041e
+
   </div>
 </template>
 <script>
@@ -58,38 +53,23 @@ export default {
     username(){
       return this.$store.state.user.username.toUpperCase();
     }
-<<<<<<< HEAD
-  },
-  methods:{
-    showAnswer(){
-      this.questionUp = false;
-     // answerUp = true;
-    }
-  },
-  created(){
-    cardService.getCards().then(response =>{
-      this.cards = response.data;
-    })
-=======
->>>>>>> e8f2c7a73a7be6876d211e12305ba36d86b48098
   }
 
 }
 </script>
+
 <style>
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 .boxed {
   width:60%;
   text-align: center;
   background-color: rgb(191, 209, 243);
   height: 240px;
-  width:540px;
+  width: 540px;
   margin:auto;
   border: 1px solid green ;
 }
-=======
-=======
+
 img{ 
   width: 800px;
 }
@@ -117,14 +97,14 @@ form {
     text-align: center;
   
 }
->>>>>>> 44b19473114fdf6890a63cc1e71fcbc74303041e
+
 
 .form-control{
   margin: 10px;
   padding: 5px;
 }
 
->>>>>>> e8f2c7a73a7be6876d211e12305ba36d86b48098
+
 #welcome{
   font-size: 30px;
   text-align: left;
@@ -133,9 +113,7 @@ button{
   font-size: 20px;
   margin: 7px;
 }
-<<<<<<< HEAD
-</style>
-=======
+
 .createADeck {
   -moz-box-shadow:inset 0px -1px 3px 0px #91b8b3;
 	-webkit-box-shadow:inset 0px -1px 3px 0px #91b8b3;
