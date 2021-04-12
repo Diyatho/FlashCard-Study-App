@@ -3,8 +3,8 @@
         <h1>{{ deckName }}</h1>
         <div class = "cards">
             <div v-for = "card in cards" 
-                 v-bind:key = "card.id"
-                 v-on:click="viewCardDetails(card.id)">
+                 v-bind:key = "card.id">
+                 <!--v-on:click="viewCardDetails(card.id)">-->
                 <card v-bind:card="card"/>
             </div>
         </div>
@@ -39,7 +39,7 @@ export default {
     deckService.getCardsByDeckId(this.$route.params.id).then(response => {
       this.deckName = response.data.deckName;
       //this.cards = response.data.cards;
-      this.cards = response.data;
+      this.cards = response.data.cards;
     });
 
   }

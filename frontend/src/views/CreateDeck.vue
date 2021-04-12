@@ -10,7 +10,7 @@
         </div>
 
         <button class="addCards" v-if= "!showForm" v-on:click= "createNewDeck">Add cards to deck</button>
-        <create-card v-if= "showForm" v-bind:deckName = "deckName"/>
+        <create-card v-if= "showForm" v-bind:deckName = "deckName" v-bind:deckDescription = "deckDescription"/>
         
 
 
@@ -31,13 +31,14 @@ export default {
     data(){
         return{
             showForm:false,
-            deckName:''
+            deckName:'',
+            deckDescription:''
         }
     },
     methods:{
         createNewDeck(){
             this.showForm = true;
-            cardService.createDeck(this.deckName).then(response => {
+            cardService.createDeck(this.deckName, this.deckDescription).then(response => {
                 console.log(response);
             });
         }
