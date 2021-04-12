@@ -1,6 +1,5 @@
 <template>
     <div>
-
         <form v-on:submit.prevent="editCard">
             <div class="form-element">
                  <label for="question">Question:</label>
@@ -23,17 +22,12 @@
         </form>
     </div>
 </template>
-
 <script>
 export default {
-    
 }
 </script>
-
 <style>
-
 div.form-element {
   margin-top: 10px;
 }
-
 </style>

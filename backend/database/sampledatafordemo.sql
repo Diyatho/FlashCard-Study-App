@@ -56,6 +56,7 @@ VALUES
 ('apple', 'la manzana', (SELECT subject_id FROM subject WHERE subject_name = 'Spanish'), 1),
 ('house', 'la casa', (SELECT subject_id FROM subject WHERE subject_name = 'Spanish'), 1);
 
+SELECT * from cards;
 
 INSERT INTO deck_cards
 (deck_id, card_id)
@@ -166,7 +167,7 @@ VALUES
 (30, 7),
 (30, 9);
 
-
+ROLLBACK;
 
 COMMIT TRANSACTION;
 

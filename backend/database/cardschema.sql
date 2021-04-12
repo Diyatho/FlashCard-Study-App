@@ -46,6 +46,5 @@ CREATE TABLE deck_cards (
 	CONSTRAINT pk_deck_id_card_id PRIMARY KEY (deck_id, card_id)
 );
 
-ROLLBACK;
 
 COMMIT TRANSACTION;

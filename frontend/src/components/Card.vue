@@ -2,7 +2,6 @@
     <div>
       <div class = "container">
             <div v-if= "questionUp"  class="boxed question">
-              
               {{card.question}}
               <button v-on:click = "questionUp = false">Show Answer</button>
               <button class = "edit" v-on:click = "edit">Edit</button>
@@ -10,17 +9,11 @@
             <div v-on:click = "questionUp = true" v-if= "!questionUp" class="boxed answer">
                 {{card.answer}}
             </div>
-        
       </div>
-
     </div>
-    
 </template>
-
-
 <script>
 import cardService from '@/services/CardService';
-
 export default {
   props: ["card"],
     data(){
@@ -32,20 +25,15 @@ export default {
   methods:{
     edit(){
       this.$router.push({ name: "edit-card", params: { cardId: this.card.id } });
-
     }
   }
-
     /*created(){
     cardService.getCards().then(response =>{
       this.cards = response.data;
-
     })
   }*/
-    
 }
 </script>
-
 <style>
     .container{
       display:flex; 
@@ -71,14 +59,11 @@ export default {
       background: #CFFAE0;
     }
     .card{
-        
         border-radius: 6px;
         padding: 1rem;
         margin: 10px;
     }
     .edit{
       font-size:12px;
-
     }
-
 </style>
