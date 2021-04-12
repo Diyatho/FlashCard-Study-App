@@ -141,6 +141,7 @@ form {
     margin-left: auto;
     margin-right: auto;
     text-align: center;
+    align-content: center;
   
 }
 
@@ -193,8 +194,8 @@ button{
  &:active {
 	position:relative;
 	top:1px;
-}
- } */
+} */
+  
     
 
 </style>

@@ -107,7 +107,7 @@ form {
 
 #welcome{
   font-size: 30px;
-  text-align: left;
+  text-align: center;
 }
 button{
   font-size: 20px;
