@@ -20,7 +20,10 @@ public interface CardDAO {
 	
 	void editCard(String question, String answer, String subject, int cardId);
 	
+	void deleteCard(int cardId);
+	
 	boolean addKeywordsToCard(String user, String answer, String keywords);
+	
 	
 
 }

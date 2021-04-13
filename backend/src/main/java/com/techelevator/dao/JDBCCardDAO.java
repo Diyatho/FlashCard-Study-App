@@ -158,13 +158,21 @@ public class JDBCCardDAO implements CardDAO {
 	
 	@Override
  	public void editCard(String question, String answer, String subject, int cardId) {
-		System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
-		System.out.println(question + answer + subject + cardId);
+
  		String sqlEditCard = "UPDATE cards SET question = ?, answer = ?, subject_id = (SELECT subject_id FROM subject WHERE subject_name = ?)" + 
  				" WHERE card_id = ?;";
  		
  		jdbcTemplate.update(sqlEditCard, question, answer, subject, cardId);
  	}
+	
+	@Override 
+	public void deleteCard(int cardId) {
+		String sqlDeleteCard = "DELETE FROM deck_cards WHERE card_id = 33;" + 
+				" DELETE FROM cards WHERE card_id = ?;";
+		
+		jdbcTemplate.update(sqlDeleteCard, cardId);
+		
+	}
 	
 	private Card mapRowToCard(SqlRowSet rs) {
 		Card card = new Card();
