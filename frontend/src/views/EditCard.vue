@@ -41,7 +41,7 @@ export default {
 
     methods:{
         editCard(){
-
+            const deckId = this.$route.params.id;
             const newCard = {
                 question:this.card.question,
                 answer:this.card.answer,
@@ -51,7 +51,8 @@ export default {
 
             cardService.updateCard(newCard).then(response => {
                 if (response.status === 200) {
-                    const pathToUse = "/user/decks/" + this.$route.params.id;
+                    console.log(this.$route);
+                    const pathToUse = `/user/decks/${deckId}`;
                     this.$router.push(pathToUse);
                     //this.$router.push('/user/decks/{{this.$route.params.id}}');
                 }
