@@ -8,11 +8,13 @@
      <div class="form-element">
        {{deckName}}
         <label for="question">Question:</label>
-        <input id="question" type="text" v-model="newCard.question" />
+        <!--<input id="question" type="text" v-model="newCard.question" />-->
+        <textarea id="question" rows="4" cols="50" v-model="newCard.question"/>
       </div>
       <div class="form-element">
         <label for="answer">Answer:</label>
-        <input id="answer" type="text" v-model="newCard.answer" />
+        <!--<input id="answer" type="text" v-model="newCard.answer" />-->
+        <textarea id="answer" rows="4" cols="50" v-model="newCard.answer"/>
       </div>
       <div class="form-element">
         <label for="subject">Subject:</label>
@@ -24,7 +26,7 @@
       </div>
       <input type="submit" value="Add to deck" />
        <input type="button" value="Cancel" v-on:click="resetForm" />
-       <input type="button" value="View Deck" v-on:click="goHome" />
+       <input type="button" value="View Deck" v-on:click="gotoDeckPage" />
 
     </form>
 
@@ -88,7 +90,7 @@ export default {
     },
 
     //takes the user back to home page
-    goHome(){
+    gotoDeckPage(){
       this.$router.push('/');
 
     }
