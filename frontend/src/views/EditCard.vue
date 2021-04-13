@@ -1,7 +1,6 @@
 <template>
     <div>
         <form v-on:submit.prevent="editCard">
-           AAAAA{{this.$route.params.id}}
            <button class="btn deleteCard" v-on:click="deleteCard">Delete Card</button>
             <div class="form-element">
                  <label for="question">Question:</label>

@@ -10,6 +10,7 @@ import CreateDeck from '../views/CreateDeck.vue'
 import StudySession from '../views/StudySession.vue'
 import Deck from '../views/Deck.vue'
 import EditCard from '../views/EditCard.vue'
+import StudyDeck from '../views/StudyDeck.vue'
 import SingleCard from '../views/SingleCard.vue'
 Vue.use(Router)
 /**
@@ -100,6 +101,14 @@ const router = new Router({
       path: "/user/studySession",
       name: "studySession",
       component: StudySession,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/user/studySession/:deckId",
+      name: "studyDeck",
+      component: StudyDeck,
       meta: {
         requiresAuth: true
       }

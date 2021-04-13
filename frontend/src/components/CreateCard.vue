@@ -26,7 +26,7 @@
       </div>
       <input type="submit" value="Add to deck" />
        <input type="button" value="Cancel" v-on:click="resetForm" />
-       <input type="button" value="View Deck" v-on:click="goHome" />
+       <input type="button" value="View Deck" v-on:click="gotoDeckPage" />
 
     </form>
 
@@ -90,7 +90,7 @@ export default {
     },
 
     //takes the user back to home page
-    goHome(){
+    gotoDeckPage(){
       this.$router.push('/');
 
     }
