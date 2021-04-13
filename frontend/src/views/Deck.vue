@@ -33,6 +33,7 @@ export default {
     data(){
         return{
             deckName:'',
+            deckDescription:'',
             cards:[],
             questionUp : true,
             showForm:false,
@@ -48,7 +49,6 @@ export default {
       this.deckName = response.data.deckName;
       this.deckDescription = response.data.deckDescription;
       this.deckId = response.data.deckId;
-      //this.cards = response.data.cards;
       this.cards = response.data.cards;
     });
 
