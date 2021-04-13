@@ -2,7 +2,7 @@
   <body>
 	  <div id="container">
      
-       
+       <br>
             <img id="logo1" src="@/assets/TEHOOT.png" alt="logo" />
         
         <div id="form1">
@@ -35,6 +35,8 @@
 
         <br />
         <p id="about">
+		Wise up on any subject! <br />
+		  <br />
           Create custom flash cards! <br />
 		  <br />
           Save decks for reference!<br />
@@ -130,9 +132,10 @@ button {
   text-decoration: none;
 }
 #about {
-  font-size: 28px;
+  font-size: 22px;
   color: #f6f6fa;
-  font-family: Arial;
+  font-family: Futura;
+  text-shadow: #91b8b3;
   text-align: left;
   grid-area: about;
 }
@@ -196,7 +199,7 @@ button {
 } */
 form {
   display: inline-block;
-  font-size: 20px;
+  font-size: 16px;
   padding: 15px;
   background: rgb(211, 211, 211);
   border-style: solid;

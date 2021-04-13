@@ -1,4 +1,6 @@
 <template>
+<div><br>
+    <img src="@/assets/TEHOOT.png" alt="Tehoot logo">
     <div>
         <div class = "deckName">
             <label for="deckName">Deck Name: </label>
@@ -11,10 +13,15 @@
 
         <button class="addCards" v-if= "!showForm" v-on:click= "createNewDeck">Add card to deck</button>
         <create-card v-if= "showForm" v-bind:deckName = "deckName" v-bind:deckDescription = "deckDescription"/>
+        <br>
+        <br>
         
+        <br>
+        <div>
+        <img id="Owl" src="@/assets/TEHOOTOwl.png" alt="Owl"></div>
 
 
-
+    </div>
     </div>
 </template>
 
@@ -87,5 +94,22 @@ export default {
 .deckDescription {
     font-size: 18px;
 }
+#owl {
+    align-content: center;
+    width: 50%;
+    height: auto;
+}
+input[type=text] {
+  padding: 0;
+  height: 30px;
+  position: relative;
+  left: 0;
+  outline: none;
+  border: 1px solid #cdcdcd;
+  
+  background-color: white;
+  font-size: 16px;
+}
+
 
 </style>

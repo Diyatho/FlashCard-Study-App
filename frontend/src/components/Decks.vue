@@ -39,6 +39,7 @@ export default {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        text-decoration: none;
     }
 
     .deck {
@@ -49,6 +50,7 @@ export default {
   margin: 0 20px;
   font-size:22px;
   font-family:copperplate;
+  text-decoration: none; 
   text-align: center;
 }
 

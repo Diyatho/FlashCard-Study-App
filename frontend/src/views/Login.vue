@@ -1,7 +1,7 @@
 <template>
 
   <div id="login" class="text-center">
-
+<br>
     <img src="@/assets/TEHOOT.png" alt="Tehoot logo">
   
     <!--Test Logo-->
@@ -139,13 +139,13 @@ form {
     margin-left: auto;
     margin-right: auto;
     text-align: center;
-    align-content: center;
   
 }
 
 .form-control{
   margin: 10px;
   padding: 5px;
+
 }
 
 button{
@@ -193,7 +193,7 @@ button{
 	position:relative;
 	top:1px;
 } */
-  
+a { text-decoration: none; }
     
 
 </style>
