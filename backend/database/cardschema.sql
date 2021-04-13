@@ -9,7 +9,7 @@ DROP TABLE IF EXISTS subject;
 
 CREATE TABLE subject (
 	subject_id serial PRIMARY KEY,
-	subject_name varchar (50)
+	subject_name varchar (50) 
 );
 
 CREATE TABLE cards (
