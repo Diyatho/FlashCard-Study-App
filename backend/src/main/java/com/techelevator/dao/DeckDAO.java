@@ -7,7 +7,7 @@ import com.techelevator.model.Deck;
 
 public interface DeckDAO {
 	
-	boolean initializeDeck(String deckName, String user);
+	boolean initializeDeck(String deckName, String description, String user);
 	
 	List<Deck> getAllDecksByUser(String user);
 	
