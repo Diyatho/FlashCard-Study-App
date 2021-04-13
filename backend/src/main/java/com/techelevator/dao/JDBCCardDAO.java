@@ -94,17 +94,6 @@ public class JDBCCardDAO implements CardDAO {
 	//if subject does not exist, it creates the subjects
 	@Override
 	public void createSubject(String subject) {
-		if (subject == null) {
-			subject = "'no subject'";
-			String sqlCheckSubject = "SELECT subject_name FROM subject" +
-					" WHERE subject_name = ?;";
-			SqlRowSet subjectRow = jdbcTemplate.queryForRowSet(sqlCheckSubject, subject);
-		
-				if (subjectRow.next() == false) {
-				String sqlAddSubject = "INSERT INTO subject (subject_name) VALUES (?);";
-				jdbcTemplate.update(sqlAddSubject, subject);
-				}
-		} else {
 		
 		String sqlCheckSubject = "SELECT subject_name FROM subject" +
 				" WHERE subject_name = ?;";
@@ -114,13 +103,16 @@ public class JDBCCardDAO implements CardDAO {
 			String sqlAddSubject = "INSERT INTO subject (subject_name) VALUES (?);";
 			jdbcTemplate.update(sqlAddSubject, subject);
 			}
-		
-		}
-		
 	}
 	
 	@Override
 	public void createCard(String question, String answer, String subject, String deckName, String user) {
+		if (subject == null) {
+			subject = "no subject";
+			createSubject(subject);
+			int newCardId = intializeCard(question, answer, subject, user);
+			addCardToDeck(deckName,  user, newCardId);
+		}
 		createSubject(subject);
 		int newCardId = intializeCard(question, answer, subject, user);
 		addCardToDeck(deckName,  user, newCardId);
@@ -129,6 +121,7 @@ public class JDBCCardDAO implements CardDAO {
 
 	private int intializeCard(String question, String answer, String subject, String user) {
 		int newCardId;
+		//subject null check
 		String sqlAddCard = "INSERT INTO cards" + 
 				" (question, answer, subject_id, creator_id)" + 
 				" VALUES (?, ?," +
