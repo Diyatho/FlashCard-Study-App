@@ -55,6 +55,11 @@ public class CardController {
 		dao.editCard(card.getQuestion(), card.getAnswer(), card.getSubject(), card.getId());
 	}
 	
+	@RequestMapping(path = "user/cards/{cardId}", method = RequestMethod.DELETE)
+	public void deleteCard(@PathVariable int cardId) {
+		dao.deleteCard(cardId);
+	}
+	
 
 }
 
