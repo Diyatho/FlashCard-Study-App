@@ -116,20 +116,113 @@ JOIN deck_cards USING (card_id)
 JOIN deck USING (deck_id)
 WHERE deck.deck_id = (SELECT deck.deck_id FROM deck WHERE deck_name = 'Banjo');
 
-"SELECT question, answer, subject.subject_name, cards.creator_id" + 
-				" FROM cards JOIN subject USING (subject_id) JOIN deck_cards USING (card_id)" + 
-				" JOIN deck USING (deck_id)" + 
-				" WHERE deck.deck_id = (SELECT deck.deck_id FROM deck WHERE deck_name = ?);";
+/*GET CARDS BY DECK ID*/
+SELECT card_id, question, answer, subject.subject_name, (SELECT username FROM users WHERE user_id = cards.creator_id) AS card_creator, deck.deck_name
+FROM cards
+JOIN subject USING (subject_id)
+JOIN deck_cards USING (card_id)
+JOIN deck USING (deck_id)
+WHERE deck_id = 1;
 
-SELECT deck_id, deck_name, creator_id
-FROM deck 
-WHERE creator_id = (SELECT user_id FROM users WHERE username = 'LindsayL');
+/*GET CARD BY ID*/
+SELECT card_id, question, answer, subject.subject_name, (SELECT username FROM users WHERE user_id = cards.creator_id) AS card_creator, deck.deck_name
+FROM cards 
+JOIN subject USING (subject_id)
+JOIN deck_cards USING (card_id)
+JOIN deck USING (deck_id)
+WHERE card_id = 1;
 
-SELECT deck_id, deck_name, creator_id FROM deck 
-WHERE creator_id = (SELECT user_id FROM users WHERE username = 'LindsayL');
-SELECT question, answer, subject.subject_name, cards.creator_id FROM cards JOIN subject USING (subject_id) JOIN deck_cards USING (card_id) JOIN deck USING (deck_id) WHERE deck.deck_id = 13;
+/*get Deck - w/ update from creator id to "deck_creator"*/
+SELECT deck_id, deck_name, description, (SELECT username FROM users WHERE user_id = deck.creator_id) AS deck_creator
+FROM deck
+WHERE deck_id = ?;
 
-SELECT deck.deck_id FROM deck WHERE deck_name = 'Banjo';
+SELECT deck_id, deck_name, description, creator_id
+FROM deck
+WHERE deck_id = 1;
+
+/*UPDATE CARD - question, answer, subject*/
+UPDATE cards
+SET
+question = ?,
+answer = ?,
+subject_id = ?
+WHERE card_id = ?;
+
+/*UPDATE subject*/
+UPDATE subject
+SET 
+subject_name = ?
+WHERE subject_id = ?;
+
+
+/*DELETE CARD*/
+
+/*UPDATE DECK - name and description*/
+BEGIN TRANSACTION;
+UPDATE deck
+SET 
+deck_name = 'US Presidents', 
+description = 'Study the presidents of the US'
+WHERE deck_id = 8;
+
+/*CHECK if Deck already exists*/
+SELECT deck_name 
+FROM deck
+WHERE deck_name = ? AND creator_id = (SELECT user_id FROM users WHERE username = ?);
+
+BEGIN TRANSACTION;
+
+INSERT INTO deck (deck_name, creator_id) VALUES ('Spanish Verbs', (SELECT user_id FROM users WHERE username = 'LindsayL'));
+SELECT * FROM deck WHERE deck_name = 'Spanish Verbs';
+
+/*getCardCreatorByCardId*/
+SELECT deck_id
+FROM cards 
+JOIN deck_cards USING (card_id)
+JOIN deck USING (deck_id)
+WHERE deck_name = 'Dogs' AND card_id = 38;
+
+INSERT INTO deck (deck_name) VALUES (?);
+
+BEGIN TRANSACTION;
+DELETE FROM deck 
+WHERE deck_id = 10;
+SELECT * FROM deck;
 ROLLBACK;
 
+BEGIN TRANSACTION;
+INSERT INTO deck_cards (deck_id, card_id)
+VALUES ((SELECT deck_id
+FROM deck
+WHERE deck_name = 'Dogs' AND deck.creator_id = (SELECT user_id FROM users WHERE username = 'user')), 40);
+
+
+	
+SELECT *
+FROM deck_cards
+WHERE card_id = 40;
+
+
+
+ROLLBACK;	
+
 COMMIT TRANSACTION;
+
+BEGIN TRANSACTION;
+DELETE FROM deck_cards WHERE deck_id = 11;
+DELETE FROM deck WHERE deck_id = 11;
+
+SELECT * FROM deck;
+SELECT * FROM deck_cards WHERE deck_id = 11;
+
+
+SELECT card_id, question, answer, subject.subject_name, 
+(SELECT username FROM users WHERE user_id = cards.creator_id) AS card_creator, deck.deck_name
+FROM cards
+JOIN subject USING (subject_id)
+JOIN deck_cards USING (card_id)
+JOIN deck USING (deck_id)
+WHERE deck_id = 18;
+
+

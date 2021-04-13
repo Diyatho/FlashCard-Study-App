@@ -39,7 +39,7 @@ export default {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        text-decoration: none;
+        
     }
 
     .deck {
