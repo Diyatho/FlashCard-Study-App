@@ -18,6 +18,12 @@ export default{
     },
     createCard(newCard){
     return axios.post('/user/cards/create', newCard);
-    }
+    },
+    getCardById(cardId){
+        return axios.get(`user/decks/0/${cardId}`);
+    },
+    updateCard(card) {
+        return axios.put(`user/cards/${card.id}`, card);
+      },
 };
 

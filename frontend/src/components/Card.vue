@@ -1,8 +1,9 @@
 <template>
     <div>
       <div class = "container">
+       
             <div v-if= "questionUp"  class="boxed question">
-              {{card.question}}
+              {{card.question}} {{deckId}}
               <button v-on:click = "questionUp = false">Show Answer</button>
               <button class = "edit" v-on:click = "edit">Edit</button>
             </div>
@@ -15,7 +16,7 @@
 <script>
 import cardService from '@/services/CardService';
 export default {
-  props: ["card"],
+  props: ["card", "deckId"],
     data(){
       return{
        cards: '',

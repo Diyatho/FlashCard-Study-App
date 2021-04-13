@@ -81,7 +81,7 @@ const router = new Router({
       }
     },
     {
-      path: "/user/edit/:cardId",
+      path: "/user/edit/:id/:cardId",
       name: "edit-card",
       component: EditCard,
       meta: {
