@@ -35,7 +35,6 @@ public class JDBCCardDAO implements CardDAO {
 		
 		return allCards;
 	}
-
 	
 	@Override
 	public Card getCardById(int cardId) {
@@ -53,7 +52,7 @@ public class JDBCCardDAO implements CardDAO {
 		
 		return card;
 	}
-
+	//unused
 	@Override
 	public List<Card> getCardsBySubject(String user, String subject) {
 		
@@ -70,7 +69,7 @@ public class JDBCCardDAO implements CardDAO {
 		}		 				
 		return cards;
 	}
-
+	//unused
 	@Override
 	public List<Card> getCardsByKeyword(String user, String keyword) {
 		List<Card> cards = new ArrayList<>();
@@ -95,26 +94,34 @@ public class JDBCCardDAO implements CardDAO {
 	//if subject does not exist, it creates the subjects
 	@Override
 	public void createSubject(String subject) {
+		
 		String sqlCheckSubject = "SELECT subject_name FROM subject" +
 				" WHERE subject_name = ?;";
 		SqlRowSet subjectRow = jdbcTemplate.queryForRowSet(sqlCheckSubject, subject);
 	
-		if (subjectRow.next() == false) {
+			if (subjectRow.next() == false) {
 			String sqlAddSubject = "INSERT INTO subject (subject_name) VALUES (?);";
-			jdbcTemplate.update(sqlAddSubject, subject);	
-		}
+			jdbcTemplate.update(sqlAddSubject, subject);
+			}
 	}
 	
 	@Override
 	public void createCard(String question, String answer, String subject, String deckName, String user) {
+		if (subject == null) {
+			subject = "no subject";
+			createSubject(subject);
+			int newCardId = intializeCard(question, answer, subject, user);
+			addCardToDeck(deckName,  user, newCardId);
+		}
 		createSubject(subject);
 		int newCardId = intializeCard(question, answer, subject, user);
-		addCardToDeck(deckName, newCardId);
+		addCardToDeck(deckName,  user, newCardId);
 		
 	}
 
 	private int intializeCard(String question, String answer, String subject, String user) {
 		int newCardId;
+		//subject null check
 		String sqlAddCard = "INSERT INTO cards" + 
 				" (question, answer, subject_id, creator_id)" + 
 				" VALUES (?, ?," +
@@ -125,21 +132,40 @@ public class JDBCCardDAO implements CardDAO {
 		
 		return newCardId;
 	}
-	
-	private void addCardToDeck(String deckName, int cardId) {
+	private void addCardToDeck(String deckName, String user, int cardId) {
+
 		
 		String sqlAddCardToDeck = "INSERT INTO deck_cards (deck_id, card_id)" + 
-				" VALUES ((SELECT deck_id FROM deck WHERE deck_name = ?), ?);";
+				" VALUES ((SELECT deck_id FROM deck WHERE deck_name = ? AND deck.creator_id = " +
+				" (SELECT user_id FROM users WHERE username = ?)), ?);";
 		
-		jdbcTemplate.update(sqlAddCardToDeck, deckName, cardId);		
+		jdbcTemplate.update(sqlAddCardToDeck, deckName, user, cardId);		
 
 	}
+
 	
 	@Override
 	public boolean addKeywordsToCard(String user, String answer, String keywords) {
 		return false;
 	}
+	
+	@Override
+ 	public void editCard(String question, String answer, String subject, int cardId) {
 
+ 		String sqlEditCard = "UPDATE cards SET question = ?, answer = ?, subject_id = (SELECT subject_id FROM subject WHERE subject_name = ?)" + 
+ 				" WHERE card_id = ?;";
+ 		
+ 		jdbcTemplate.update(sqlEditCard, question, answer, subject, cardId);
+ 	}
+	
+	@Override 
+	public void deleteCard(int cardId) {
+		String sqlDeleteCard = "DELETE FROM deck_cards WHERE card_id = ?;" + 
+				" DELETE FROM cards WHERE card_id = ?;";
+		
+		jdbcTemplate.update(sqlDeleteCard, cardId, cardId);
+		
+	}
 	
 	private Card mapRowToCard(SqlRowSet rs) {
 		Card card = new Card();

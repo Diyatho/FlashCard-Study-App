@@ -6,7 +6,7 @@
         </div>
         <div class = "deckDescription">
             <label for="deckDescription">Description: </label>
-            <textarea id="deckDescription" name="deckDescription" rows="4" cols="30"></textarea>
+            <textarea id="deckDescription" name="deckDescription" rows="4" cols="30" v-model="deckDescription"></textarea>
         </div>
 
         <button class="addCards" v-if= "!showForm" v-on:click= "createNewDeck">Add cards to deck</button>

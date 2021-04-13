@@ -1,6 +1,7 @@
 <template>
     <div>
       <div class = "container">
+       
             <div v-if= "questionUp"  class="boxed question">
               {{card.question}}
               <button v-on:click = "questionUp = false">Show Answer</button>
@@ -13,9 +14,9 @@
     </div>
 </template>
 <script>
-import cardService from '@/services/CardService';
+
 export default {
-  props: ["card"],
+  props: ["card", "deckId"],
     data(){
       return{
        cards: '',
@@ -24,14 +25,9 @@ export default {
   },
   methods:{
     edit(){
-      this.$router.push({ name: "edit-card", params: { cardId: this.card.id } });
+      this.$router.push({ name: "edit-card", params: { id:this.deckId,cardId: this.card.id } });
     }
   }
-    /*created(){
-    cardService.getCards().then(response =>{
-      this.cards = response.data;
-    })
-  }*/
 }
 </script>
 <style>
