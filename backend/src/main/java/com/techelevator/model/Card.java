@@ -11,7 +11,7 @@ public class Card {
 	private String subject;
 	private String cardCreator;
 	private boolean isCorrect;
-	private List<String> keywords = new ArrayList<>();
+	private String keywords;;
 	private String deckName;
 	
 //	public Card (String question, String answer, String subject) {
@@ -57,10 +57,10 @@ public class Card {
 	public void setCorrect(boolean isCorrect) {
 		this.isCorrect = isCorrect;
 	}
-	public List<String> getKeywords() {
+	public String getKeywords() {
 		return keywords;
 	}
-	public void setKeywords(List<String> keywords) {
+	public void setKeywords(String keywords) {
 		this.keywords = keywords;
 	}
 	public String getDeckName() {
