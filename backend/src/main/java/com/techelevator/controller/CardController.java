@@ -50,6 +50,11 @@ public class CardController {
 
 	}
 	
+	@RequestMapping(path = "/user/cards/{cardId}", method = RequestMethod.PUT)
+	public void editCard(@RequestBody Card card) {
+		dao.editCard(card.getQuestion(), card.getAnswer(), card.getSubject(), card.getId());
+	}
+	
 
 }
 

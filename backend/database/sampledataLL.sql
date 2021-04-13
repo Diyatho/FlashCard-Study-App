@@ -191,4 +191,28 @@ WHERE deck_id = 10;
 SELECT * FROM deck;
 ROLLBACK;
 
+BEGIN TRANSACTION;
+INSERT INTO deck_cards (deck_id, card_id)
+VALUES ((SELECT deck_id
+FROM deck
+WHERE deck_name = 'Dogs' AND deck.creator_id = (SELECT user_id FROM users WHERE username = 'user')), 40);
+
+
+	
+SELECT *
+FROM deck_cards
+WHERE card_id = 40;
+
+
+
+ROLLBACK;	
+
 COMMIT TRANSACTION;
+
+BEGIN TRANSACTION;
+DELETE FROM deck_cards WHERE deck_id = 11;
+DELETE FROM deck WHERE deck_id = 11;
+
+SELECT * FROM deck;
+SELECT * FROM deck_cards WHERE deck_id = 11;
+

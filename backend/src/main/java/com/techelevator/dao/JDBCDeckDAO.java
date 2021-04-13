@@ -20,7 +20,7 @@ public class JDBCDeckDAO implements DeckDAO {
 	}
 	//used
 	@Override
-	public boolean initializeDeck(String deckName, String user) {
+	public boolean initializeDeck(String deckName, String description, String user) {
 		boolean deckInitialized = false;
 		
 		String sqlCheckForDeckByUser = "SELECT deck_name \n" + 
@@ -29,8 +29,8 @@ public class JDBCDeckDAO implements DeckDAO {
 		SqlRowSet deckRow = jdbcTemplate.queryForRowSet(sqlCheckForDeckByUser, deckName, user);
 		
 		if(deckRow.next() == false) {
-			String sqlInitDeck = "INSERT INTO deck (deck_name, creator_id) VALUES (?, (SELECT user_id FROM users WHERE username = ?));";
-			deckInitialized = jdbcTemplate.update(sqlInitDeck, deckName, user) == 1; 
+			String sqlInitDeck = "INSERT INTO deck (deck_name, description, creator_id) VALUES (?, ?, (SELECT user_id FROM users WHERE username = ?));";
+			deckInitialized = jdbcTemplate.update(sqlInitDeck, deckName, description, user) == 1; 
 			return deckInitialized;	
 		} 
 		return deckInitialized;
