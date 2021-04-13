@@ -2,7 +2,7 @@
 <div>
     <form v-on:submit.prevent="addNewCard">
 
-      <div class="status-message success" v-show="formAddedSuccess">Card created succesffully</div>
+      <div class="status-message success" v-show="formAddedSuccess">Card created successfully</div>
       <div class="status-message error" v-show="formAddedFailure">{{errorMsg}}</div>
 
      <div class="form-element">
