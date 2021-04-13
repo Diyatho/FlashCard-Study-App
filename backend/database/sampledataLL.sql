@@ -216,3 +216,13 @@ DELETE FROM deck WHERE deck_id = 11;
 SELECT * FROM deck;
 SELECT * FROM deck_cards WHERE deck_id = 11;
 
+
+SELECT card_id, question, answer, subject.subject_name, 
+(SELECT username FROM users WHERE user_id = cards.creator_id) AS card_creator, deck.deck_name
+FROM cards
+JOIN subject USING (subject_id)
+JOIN deck_cards USING (card_id)
+JOIN deck USING (deck_id)
+WHERE deck_id = 18;
+
+

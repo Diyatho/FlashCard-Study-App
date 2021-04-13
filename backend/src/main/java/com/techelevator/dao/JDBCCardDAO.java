@@ -94,16 +94,29 @@ public class JDBCCardDAO implements CardDAO {
 	//if subject does not exist, it creates the subjects
 	@Override
 	public void createSubject(String subject) {
-		if (subject != null) {
+		if (subject == null) {
+			subject = "'no subject'";
 			String sqlCheckSubject = "SELECT subject_name FROM subject" +
-				" WHERE subject_name = ?;";
+					" WHERE subject_name = ?;";
 			SqlRowSet subjectRow = jdbcTemplate.queryForRowSet(sqlCheckSubject, subject);
+		
+				if (subjectRow.next() == false) {
+				String sqlAddSubject = "INSERT INTO subject (subject_name) VALUES (?);";
+				jdbcTemplate.update(sqlAddSubject, subject);
+				}
+		} else {
+		
+		String sqlCheckSubject = "SELECT subject_name FROM subject" +
+				" WHERE subject_name = ?;";
+		SqlRowSet subjectRow = jdbcTemplate.queryForRowSet(sqlCheckSubject, subject);
 	
 			if (subjectRow.next() == false) {
 			String sqlAddSubject = "INSERT INTO subject (subject_name) VALUES (?);";
 			jdbcTemplate.update(sqlAddSubject, subject);
 			}
+		
 		}
+		
 	}
 	
 	@Override
