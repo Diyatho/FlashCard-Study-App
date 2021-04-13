@@ -160,10 +160,10 @@ public class JDBCCardDAO implements CardDAO {
 	
 	@Override 
 	public void deleteCard(int cardId) {
-		String sqlDeleteCard = "DELETE FROM deck_cards WHERE card_id = 33;" + 
+		String sqlDeleteCard = "DELETE FROM deck_cards WHERE card_id = ?;" + 
 				" DELETE FROM cards WHERE card_id = ?;";
 		
-		jdbcTemplate.update(sqlDeleteCard, cardId);
+		jdbcTemplate.update(sqlDeleteCard, cardId, cardId);
 		
 	}
 	
