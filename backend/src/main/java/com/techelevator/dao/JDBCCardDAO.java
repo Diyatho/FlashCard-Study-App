@@ -143,8 +143,6 @@ public class JDBCCardDAO implements CardDAO {
 		jdbcTemplate.update(sqlAddCardToDeck, deckName, user, cardId);		
 
 	}
-
-	
 	
 	private void addKeywordsToCard(String keywords, int cardId) {
 		
@@ -160,10 +158,8 @@ public class JDBCCardDAO implements CardDAO {
 			
 			if (keywordRow.next() == false) {
 				jdbcTemplate.update(sqlAddKeyword, keyword);
-			}
-			
-			jdbcTemplate.update(sqlAddKeywordToCard, cardId ,keyword);
-		
+			}		
+			jdbcTemplate.update(sqlAddKeywordToCard, cardId ,keyword);		
 		}
 	}
 	
