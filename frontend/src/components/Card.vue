@@ -3,9 +3,11 @@
       <div class = "container">
        
             <div v-if= "questionUp"  class="boxed question">
-              {{card.question}}
-              <button v-on:click = "questionUp = false">Show Answer</button>
-              <button class = "edit" v-on:click = "edit">Edit</button>
+                {{card.question}}
+                <div>
+                  <button v-on:click = "questionUp = false">Show Answer</button>
+                  <button class = "edit" v-on:click = "edit">Edit</button>
+                </div>
             </div>
             <div v-on:click = "questionUp = true" v-if= "!questionUp" class="boxed answer">
                 {{card.answer}}
@@ -16,6 +18,7 @@
 <script>
 
 export default {
+  name:"card",
   props: ["card", "deckId"],
     data(){
       return{
