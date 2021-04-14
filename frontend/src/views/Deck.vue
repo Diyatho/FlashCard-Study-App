@@ -58,11 +58,3 @@ export default {
 }
 </script>
 
-
-<style>
-
-.addCard{
-    background: #BBE9FA;
-}
-
-</style>

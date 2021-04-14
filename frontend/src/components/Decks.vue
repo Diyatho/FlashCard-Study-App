@@ -39,14 +39,18 @@ export default {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        
     }
 
     .deck {
-  background-color: #f7fafc;
+  background-color: #BBE9FA;
   border-radius: 10px;
   padding: 40px;
   flex: 1;
   margin: 0 20px;
+  font-size:22px;
+  font-family:copperplate;
+  text-decoration: none; 
   text-align: center;
 }
 
