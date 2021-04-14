@@ -55,7 +55,7 @@ export default {
   flex-wrap: wrap;
 }
 .boxed {
-  width: 60%;
+  
   text-align: center;
   background-color: rgb(184, 190, 201);
   line-height: 100px;

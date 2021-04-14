@@ -9,12 +9,12 @@
        {{deckName}}
         <label for="question">Question:</label>
         <!--<input id="question" type="text" v-model="newCard.question" />-->
-        <textarea id="question" rows="4" cols="50" v-model="newCard.question"/>
+        <textarea id="createquestion" rows="4" cols="50" v-model="newCard.question"/>
       </div>
       <div class="form-element">
         <label for="answer">Answer:</label>
         <!--<input id="answer" type="text" v-model="newCard.answer" />-->
-        <textarea id="answer" rows="4" cols="50" v-model="newCard.answer"/>
+        <textarea id="createanswer" rows="4" cols="50" v-model="newCard.answer"/>
       </div>
       <div class="form-element">
         <label for="subject">Subject:</label>

@@ -29,7 +29,7 @@
         
         <p id="about">
 		Wise up on any subject! <br />
-		  <br />
+      <br />
           Create custom flash cards! <br />
       <br />
           Save decks for reference!<br />

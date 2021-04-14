@@ -7,11 +7,11 @@
 
      <div class="form-element">
         <label for="question">Question:</label>
-        <input id="question" type="text" v-model="newCard.question" />
+        <input id="createquestion" type="text" v-model="newCard.question" />
       </div>
       <div class="form-element">
         <label for="answer">Answer:</label>
-        <input id="answer" type="text" v-model="newCard.answer" />
+        <input id="createanswer" type="text" v-model="newCard.answer" />
       </div>
       <div class="form-element">
         <label for="subject">Subject:</label>
