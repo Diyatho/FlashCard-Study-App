@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+	  <br>
     <img src="@/assets/TEHOOT.png" alt="logo">
     <p id = "welcome">Welcome {{username}}!!</p>
 
@@ -27,6 +28,7 @@
 <router-link class=viewCards v-bind:to="{ name: 'viewCards' }" tag="button">View All Cards</router-link>
   </form>
   </div>
+   <br>
    <br>
    <!--<img id="Owl" src="@/assets/TEHOOTOwl.png" alt="Owl"> -->
    <decks/>   

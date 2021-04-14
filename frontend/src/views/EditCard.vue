@@ -53,7 +53,6 @@ export default {
                     console.log(this.$route);
                     const pathToUse = `/user/decks/${deckId}`;
                     this.$router.push(pathToUse);
-                    //this.$router.push('/user/decks/{{this.$route.params.id}}');
                 }
              })
             .catch(error => {
