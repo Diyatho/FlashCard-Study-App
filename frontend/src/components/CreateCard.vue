@@ -2,7 +2,7 @@
 <div>
     <form v-on:submit.prevent="addNewCard">
 
-      <div class="status-message success" v-show="formAddedSuccess">Card created succesffully</div>
+      <div class="status-message success" v-show="formAddedSuccess">Card created successfully</div>
       <div class="status-message error" v-show="formAddedFailure">{{errorMsg}}</div>
 
      <div class="form-element">
@@ -24,9 +24,9 @@
         <label for="keywords">Keywords (space separated):</label>
         <input id="keywords" type="text" v-model="newCard.keywords" />
       </div>
-      <input type="submit" value="Add to deck" />
-       <input type="button" value="Cancel" v-on:click="resetForm" />
-       <input type="button" value="View Deck" v-on:click="gotoDeckPage" />
+      <input id="add" type="submit" value="Add to deck" />
+       <input id="cancel" type="button" value="Cancel" v-on:click="resetForm" />
+       <input id="view" type="button" value="View Deck" v-on:click="goHome" />
 
     </form>
 
@@ -137,4 +137,85 @@ form > input[type="submit"] {
   width: 100px;
   margin-right: 10px;
 }
+#add {
+  -moz-box-shadow:inset 0px -1px 3px 0px #91b8b3;
+	-webkit-box-shadow:inset 0px -1px 3px 0px #91b8b3;
+	box-shadow:inset 0px -1px 3px 0px #91b8b3;
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ffff00), color-stop(1, #ffff00));
+	background:-moz-linear-gradient(top, #C57BFF 5%, #C57BFF 100%);
+	background:-webkit-linear-gradient(top, #C57BFF 5%, #C57BFF 100%);
+	background:-o-linear-gradient(top, #C57BFF 5%, #C57BFF 100%);
+	background:-ms-linear-gradient(top, #C57BFF 5%, #C57BFF 100%);
+	background:linear-gradient(to bottom, #C57BFF 5%, #C57BFF 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffff00', endColorstr='#ffff00',GradientType=0);
+	background-color:#C57BFF;
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+	border-radius:5px;
+	border:1px solid #566963;
+	display:inline-block;
+	cursor:pointer;
+	color:#00000b;
+	font-family:Arial;
+	font-size:14px;
+	font-weight:bold;
+  text-align: center;
+	padding:5px 5px;
+	text-decoration:none;
+/* text-shadow:0px -1px 0px #2b665e; */
+}
+#cancel {
+  -moz-box-shadow:inset 0px -1px 3px 0px #91b8b3;
+	-webkit-box-shadow:inset 0px -1px 3px 0px #91b8b3;
+	box-shadow:inset 0px -1px 3px 0px #91b8b3;
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ffff00), color-stop(1, #ffff00));
+	background:-moz-linear-gradient(top, #ffff00 5%, #ffff00 100%);
+	background:-webkit-linear-gradient(top, #ffff00 5%, #ffff00 100%);
+	background:-o-linear-gradient(top, #ffff00 5%, #ffff00 100%);
+	background:-ms-linear-gradient(top, #ffff00 5%, #ffff00 100%);
+	background:linear-gradient(to bottom, #ffff00 5%, #ffff00 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffff00', endColorstr='#ffff00',GradientType=0);
+	background-color:#ffff00;
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+	border-radius:5px;
+	border:1px solid #566963;
+	display:inline-block;
+	cursor:pointer;
+	color:#00000b;
+	font-family:Arial;
+	font-size:14px;
+	font-weight:bold;
+	padding:5px 5px;
+	text-decoration:none;
+	/* text-shadow:0px -1px 0px #2b665e; */
+}
+#view {
+  -moz-box-shadow:inset 0px -1px 3px 0px #91b8b3;
+	-webkit-box-shadow:inset 0px -1px 3px 0px #91b8b3;
+	box-shadow:inset 0px -1px 3px 0px #91b8b3;
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ffff00), color-stop(1, #ffff00));
+	background:-moz-linear-gradient(top, #80DA71 5%, #80DA71 100%);
+	background:-webkit-linear-gradient(top, #80DA71 5%, #80DA71 100%);
+	background:-o-linear-gradient(top, #80DA71 5%, #80DA71 100%);
+	background:-ms-linear-gradient(top, #80DA71 5%, #80DA71 100%);
+	background:linear-gradient(to bottom, #80DA71 5%, #80DA71 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffff00', endColorstr='#ffff00',GradientType=0);
+	background-color:#80DA71;
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+	border-radius:5px;
+	border:1px solid #566963;
+	display:inline-block;
+	cursor:pointer;
+	color:#00000b;
+	font-family:Arial;
+	font-size:14px;
+	font-weight:bold;
+	padding:5px 5px;
+	text-decoration:none;
+/* text-shadow:0px -1px 0px #2b665e; */
+}
+
+
 </style>
