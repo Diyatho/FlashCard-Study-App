@@ -1,5 +1,8 @@
 <template>
     <div>
+
+         <br>
+    <img src="@/assets/TEHOOT.png" alt="Tehoot logo">
         <div class = "container">
        
             <div v-if= "questionUp"  class="boxed question">

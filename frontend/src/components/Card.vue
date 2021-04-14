@@ -1,5 +1,6 @@
 <template>
     <div>
+     
       <div class = "container">
        
             <div v-if= "questionUp"  class="boxed question">

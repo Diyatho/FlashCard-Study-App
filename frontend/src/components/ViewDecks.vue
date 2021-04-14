@@ -1,6 +1,8 @@
 <template>
     <div>
 
+         <br>
+    <img src="@/assets/TEHOOT.png" alt="Tehoot logo">
     </div>
     
 </template>
