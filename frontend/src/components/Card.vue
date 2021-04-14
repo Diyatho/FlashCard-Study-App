@@ -27,6 +27,7 @@
 
 <script>
 export default {
+  name:"card",
   props: ["card", "deckId"],
   data() {
     return {
