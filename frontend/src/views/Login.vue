@@ -1,8 +1,8 @@
 <template>
 
   <div id="login" class="text-center">
-<br>
-    <img src="@/assets/TEHOOT.png" alt="Tehoot logo">
+
+    <img id="textlogo" src="@/assets/TEHOOT.png" alt="Tehoot logo">
   
     <!--Test Logo-->
    
@@ -105,19 +105,20 @@ body {
 background: #7DDFA4;
 text-align: center;
 font-family: Helvetica, Arial, sans-serif;
+justify-content: center;
 }
 
 h3{
   color: White;
 }
 
-img {
+#textlogo {
 filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.1));
-width: 50%;
+width: 600px;
 }
 
 #login{
-  margin: auto;
+  margin: inherit;
 }
 
 #Owl{
@@ -130,8 +131,9 @@ div.form
     text-align: center;
 }
 form {
-  font-size: 20px;
-  padding: 15px;
+  justify-self: center;
+  text-align: center;
+  width:500px;
   background: rgb(211, 211, 211);
   border-style: solid;
   max-width: fit-content;

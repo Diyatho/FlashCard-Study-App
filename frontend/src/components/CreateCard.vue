@@ -219,5 +219,9 @@ form > input[type="submit"] {
 /* text-shadow:0px -1px 0px #2b665e; */
 }
 
+form {
+  width: unset;
+}
+
 
 </style>
