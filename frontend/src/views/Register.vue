@@ -1,6 +1,6 @@
 <template>
   <div id="register" class="text-center">
-    
+    <br>
     <img src="@/assets/TEHOOT.png" alt="logo">
 
       <h1 class="h3 mb-3 font-weight-normal">Create Account</h1>
@@ -123,10 +123,10 @@ form {
   padding: 15px;
   border-style: solid;
   background: #C5C5C5;
-border: 1px solid #000000;
-box-sizing: border-box;
-box-shadow: 4px 4px 2px rgba(0, 0, 0, 0.25);
-border-radius: 25px;
+  border: 1px solid #000000;
+  box-sizing: border-box;
+  box-shadow: 4px 4px 2px rgba(0, 0, 0, 0.25);
+  border-radius: 25px;
 }
 
 button{
