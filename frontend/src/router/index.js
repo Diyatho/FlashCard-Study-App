@@ -12,6 +12,7 @@ import Deck from '../views/Deck.vue'
 import EditCard from '../views/EditCard.vue'
 import StudyDeck from '../views/StudyDeck.vue'
 import SingleCard from '../views/SingleCard.vue'
+import ViewCards from '../views/ViewCards.vue'
 Vue.use(Router)
 /**
  * The Vue Router is used to "direct" the browser to render a specific view component
@@ -77,6 +78,14 @@ const router = new Router({
       path: "/user/decks/:id",
       name: "deck",
       component: Deck,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/user/cards",
+      name: "viewCards",
+      component: ViewCards,
       meta: {
         requiresAuth: true
       }
