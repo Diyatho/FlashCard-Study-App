@@ -18,7 +18,7 @@ export default {
     data(){
         return{
             decks:[],
-            deckName:''
+            deckName:'--Deck name--'
         }
     },
     created() {
@@ -29,3 +29,6 @@ export default {
     
 }
 </script>
+
+<style>
+</style>
