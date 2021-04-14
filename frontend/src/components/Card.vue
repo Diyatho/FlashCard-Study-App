@@ -89,13 +89,14 @@ export default {
   opacity: 0;
   transform: rotateY(180deg);
 }
-.flip-enter-to,
+/* .flip-enter-to,
 .flip-leave-from {
-  opacity: 1;
-  transform: rotateY(0);
-}
+  opacity: 0;
+  transform: rotateY(180deg);
+} */
 .flip-enter-action,
 .flip-leave-active {
-  transition: all 0.5s ease;
+  transition: all 0.2s ease-in-out;
 }
+
 </style>
