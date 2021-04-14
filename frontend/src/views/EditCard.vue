@@ -1,8 +1,6 @@
 <template>
     <div>
-
-         <br>
-    <img src="@/assets/TEHOOT.png" alt="Tehoot logo">
+        
         <form v-on:submit.prevent="editCard">
            <button class="btn deleteCard" v-on:click="deleteCard">Delete Card</button>
             <div class="form-element">
@@ -69,6 +67,7 @@ export default {
         },
         //delete the card
          deleteCard() {
+             const deckId = this.$route.params.id;
              if (
                 confirm(
                  "Are you sure you want to delete this card? This action cannot be undone."
@@ -77,7 +76,8 @@ export default {
                     cardService.deleteCard(this.card.id).then(response => {
                         if (response.status === 200) {
                         alert("Card successfully deleted");
-                        this.$router.push(`/board/${this.card.boardId}`);
+                        const pathToUse = `/user/decks/${deckId}`;
+                         this.$router.push(pathToUse);
                         }
                     })
                 .catch(error => {
