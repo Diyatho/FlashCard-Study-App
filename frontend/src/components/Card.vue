@@ -53,8 +53,6 @@ export default {
   justify-content: space-evenly;
   align-items: center;
   flex-wrap: wrap;
-  margin: 15px 0;
-  font-size: 20px;
 }
 .boxed {
   width: 60%;
@@ -90,11 +88,7 @@ export default {
   opacity: 0;
   transform: rotateY(180deg);
 }
-/* .flip-enter-to,
-.flip-leave-from {
-  opacity: 0;
-  transform: rotateY(180deg);
-} */
+
 .flip-enter-action,
 .flip-leave-active {
   transition: all 0.2s ease-in-out;
