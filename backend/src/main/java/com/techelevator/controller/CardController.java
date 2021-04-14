@@ -39,10 +39,10 @@ public class CardController {
 //		return dao.getCardsBySubject(principal.getName(), subject);
 //	}
 	
-//	@RequestMapping(path = "/user/cards/{keyword}", method = RequestMethod.GET)
-//	public List<Card> getCardsByKeyword(Principal principal, @PathVariable String keyword) {
-//		return dao.getCardsByKeyword(principal.getName(), keyword);
-//	}
+	@RequestMapping(path = "/user/cards/{keyword}", method = RequestMethod.GET)
+	public List<Card> getCardsByKeyword(Principal principal, @PathVariable String keyword) {
+		return dao.getCardsByKeyword(principal.getName(), keyword);
+	}
 	
 	@RequestMapping(path = "/user/cards/create", method = RequestMethod.POST)
 	public void createCard(@RequestBody Card card, Principal principal) {
