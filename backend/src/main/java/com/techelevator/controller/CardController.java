@@ -39,20 +39,20 @@ public class CardController {
 //		return dao.getCardsBySubject(principal.getName(), subject);
 //	}
 	
-//	@RequestMapping(path = "/user/cards/{keyword}", method = RequestMethod.GET)
-//	public List<Card> getCardsByKeyword(Principal principal, @PathVariable String keyword) {
-//		return dao.getCardsByKeyword(principal.getName(), keyword);
-//	}
+	@RequestMapping(path = "/user/cards/{keyword}", method = RequestMethod.GET)
+	public List<Card> getCardsByKeyword(Principal principal, @PathVariable String keyword) {
+		return dao.getCardsByKeyword(principal.getName(), keyword);
+	}
 	
 	@RequestMapping(path = "/user/cards/create", method = RequestMethod.POST)
 	public void createCard(@RequestBody Card card, Principal principal) {
-		dao.createCard(card.getQuestion(), card.getAnswer(), card.getSubject(), card.getDeckName(), principal.getName());
+		dao.createCard(card.getQuestion(), card.getAnswer(), card.getSubject(), card.getDeckName(), card.getKeywords(), principal.getName());
 
 	}
 	
 	@RequestMapping(path = "/user/cards/{cardId}", method = RequestMethod.PUT)
 	public void editCard(@RequestBody Card card) {
-		dao.editCard(card.getQuestion(), card.getAnswer(), card.getSubject(), card.getId());
+		dao.editCard(card.getQuestion(), card.getAnswer(), card.getSubject(), card.getId() );
 	}
 	
 	@RequestMapping(path = "user/cards/{cardId}", method = RequestMethod.DELETE)
