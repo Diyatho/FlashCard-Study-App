@@ -90,7 +90,7 @@ export default {
     },
 
     //takes the user back to home page
-    gotoDeckPage(){
+    goHome(){
       this.$router.push('/');
 
     }
