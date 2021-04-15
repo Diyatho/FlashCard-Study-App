@@ -90,6 +90,14 @@ const router = new Router({
         requiresAuth: true
       }
     },
+    {
+      path: "/user/cards",
+      name: "viewCards",
+      component: ViewCards,
+      meta: {
+        requiresAuth: true
+      }
+    },
    /* {
       path: "/user/decks/:id/cards/:cardId",
       name: "card",

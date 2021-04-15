@@ -3,7 +3,6 @@
       <div>
         <label for="search">Search Cards By Keyword: </label>
         <input type="text"  placeholder="Type keyword here" v-model = "keyword">
-        <input type="button" value="Search">
       </div>
       <h1>All Cards</h1>
       <div class = "cards">
@@ -40,7 +39,7 @@ export default {
       const cards = this.cards;
       console.log(cards);
       return cards.filter((card) => {
-        return this.keyword == '' ? true: card.question.includes("What");
+        return this.keyword == '' ? true: card.keywords.includes(this.keyword);
       });
     },
   },
