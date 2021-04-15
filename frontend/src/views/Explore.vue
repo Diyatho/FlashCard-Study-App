@@ -10,13 +10,13 @@
             <form class="form-options">
               <router-link
                 class="signUp"
-                v-bind:to="{ name: 'signUp' }"
+                v-bind:to="{ name: 'register' }"
                 tag="button"
                 >Sign Up</router-link>
               <br />
               <router-link
                 class="logIn"
-                v-bind:to="{ name: 'logIn' }"
+                v-bind:to="{ name: 'login' }"
                 tag="button"
                 >Log In</router-link
               >

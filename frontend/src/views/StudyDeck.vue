@@ -1,7 +1,7 @@
 <template>
     <div>
         <div>
-            <single-card v-bind:card = "cards[index]"/>
+            <single-card v-bind:card = "cards[index]" v-bind:questionUp = "true"/>
             <button v-on:click = "nextQuestion" class = "next"> Next </button>
         </div>
         <div>
@@ -11,7 +11,7 @@
             <button v-on:click = "showFinalScore"> End Study Session</button>
         </div>
         <div v-if= "endOfDeck" class = "alert"> 
-            <p>You have reached the end of the deck! Click on "End Study Session" to know the score</p>
+            <p>You have reached the end of the deck. Click on "End Study Session" to know the score!</p>
         </div> 
         <div v-if="showScore">
             Your score is {{score}} out of {{questions}}!
