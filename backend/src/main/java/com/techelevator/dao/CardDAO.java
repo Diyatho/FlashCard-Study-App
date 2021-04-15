@@ -16,14 +16,15 @@ public interface CardDAO {
 	
 	void createSubject(String subject);
 
-	void createCard(String question, String answer, String subject, String deckName, String user);
+	void createCard(String question, String answer, String subject, String deckName, String keywords, String user);
 	
 	void editCard(String question, String answer, String subject, int cardId);
 	
 	void deleteCard(int cardId);
 	
-	boolean addKeywordsToCard(String user, String answer, String keywords);
-	
+	//private method
+//	boolean addKeywordsToCard(String user, String answer, String keywords);
+
 	
 
 }
