@@ -11,8 +11,6 @@ public interface DeckDAO {
 	
 	List<Deck> getAllDecksByUser(String user);
 	
-	//List<Card> getCardsByDeck(String deckName, String user);
-	
 	List<Card> getCardsByDeckId(int deckId);
 
 	List<Deck> getAllDecksWithCards(String user);
