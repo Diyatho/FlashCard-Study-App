@@ -51,15 +51,9 @@ export default {
   padding: 40px;
   flex: 1;
   margin: 20px 20px;
-<<<<<<< HEAD
-  font-size: 22px;
-  font-family: copperplate;
-  text-decoration: none;
-=======
   font-size:22px;
   font-family:copperplate;
   text-decoration: none; 
->>>>>>> b6c78761a6b067c213a3a0109e9a4f51704d6b1f
   text-align: center;
 }
 </style>
