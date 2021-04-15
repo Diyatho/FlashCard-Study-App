@@ -90,7 +90,7 @@ export default {
     },
 
     //takes the user back to home page
-    gotoDeckPage(){
+    goHome(){
       this.$router.push('/');
 
     }
@@ -215,10 +215,6 @@ form > input[type="submit"] {
 	padding:5px 5px;
 	text-decoration:none;
 /* text-shadow:0px -1px 0px #2b665e; */
-}
-
-form {
-  width: unset;
 }
 
 

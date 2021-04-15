@@ -14,7 +14,7 @@
         </div>
         <!--Back-->
         <div v-on:click="questionUp = true"
-        v-else 
+        v-else
         class="boxed answer"
         key="back"
         >
@@ -24,7 +24,6 @@
     </div>
   </div>
 </template>
-
 <script>
 export default {
   name:"card",
@@ -35,7 +34,6 @@ export default {
       questionUp: true,
     };
   },
-
   methods: {
     edit() {
       this.$router.push({
@@ -46,7 +44,6 @@ export default {
   },
 };
 </script>
-
 <style>
 .container {
   display: flex;
@@ -55,7 +52,6 @@ export default {
   flex-wrap: wrap;
 }
 .boxed {
-  
   text-align: center;
   background-color: rgb(184, 190, 201);
   line-height: 100px;
@@ -67,10 +63,10 @@ export default {
   border-radius: 10px;
 }
 .question {
-  background: #bbe9fa;
+  background: #BBE9FA;
 }
 .answer {
-  background: #cffae0;
+  background: #CFFAE0;
 }
 .card {
   border-radius: 6px;
@@ -80,18 +76,14 @@ export default {
 .edit {
   font-size: 18px;
 }
-
 /*Flip Transitions */
-
 .flip-enter-from,
 .flip-leave-to {
   opacity: 0;
   transform: rotateY(180deg);
 }
-
 .flip-enter-action,
 .flip-leave-active {
   transition: all 0.2s ease-in-out;
 }
-
 </style>

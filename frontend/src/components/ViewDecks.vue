@@ -1,6 +1,8 @@
 <template>
     <div>
 
+         <br>
+    <img src="@/assets/TEHOOT.png" alt="Tehoot logo">
     </div>
     
 </template>
@@ -15,7 +17,7 @@ export default {
         }
     },
     created(){
-    this.cardService.getCards().then(response =>{
+    cardService.getCards().then(response =>{
       this.cards = response.data;
 
     })
