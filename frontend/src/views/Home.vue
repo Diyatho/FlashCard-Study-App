@@ -13,7 +13,7 @@
    <br>
     <router-link class=studySession v-bind:to="{ name: 'studySession' }" tag="button">Start A Study Session</router-link>
     <br>
-<router-link class=viewCards v-bind:to="{ name: 'viewCards' }" tag="button">View All Cards</router-link>
+<router-link class=viewCards v-bind:to="{ name: 'viewCards' }" tag="button">Search All Cards</router-link>
   </form>
   </div>
    <br>

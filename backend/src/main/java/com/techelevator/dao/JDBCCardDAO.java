@@ -123,7 +123,10 @@ public class JDBCCardDAO implements CardDAO {
 		createSubject(subject);
 		int newCardId = intializeCard(question, answer, subject, user);
 		addCardToDeck(deckName,  user, newCardId);
-		addKeywordsToCard(keywords, newCardId); 
+		if(keywords!= null) {
+			addKeywordsToCard(keywords, newCardId); 
+		}
+		
 		
 	}
 
