@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div class="container">
+  <div class = "card">
+    <!--<div class="container">-->
       <transition name="flip" mode="out-in">
         <!--Front-->
         <div
@@ -9,7 +9,7 @@
           class="boxed question"
           key="front"
         >
-          {{ card.question }} <br />
+          {{ card.question }} <br /><br/><br/><br/>
           <button class="edit" v-on:click="edit">Edit</button>
         </div>
         <!--Back-->
@@ -21,7 +21,7 @@
           {{ card.answer }}
         </div>
       </transition>
-    </div>
+    <!--</div>-->
   </div>
 </template>
 <script>
@@ -61,6 +61,7 @@ export default {
   margin: auto;
   border: 1px solid green;
   border-radius: 10px;
+  font-size: 20px;
 }
 .question {
   background: #BBE9FA;
