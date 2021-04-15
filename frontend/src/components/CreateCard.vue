@@ -87,11 +87,10 @@ export default {
     // clears the form
     resetForm() {
       this.newCard = {};
-      this.$router.push(`/user/decks/${this.deckId}`);
     },
 
-    //takes the user back to home page
-    goHome(){
+    //takes the user back to deck page - not working now so routing to home page now.
+    backToDeck(){
       this.$router.push('/');
 
     }

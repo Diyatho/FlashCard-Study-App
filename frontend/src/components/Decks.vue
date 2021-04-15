@@ -39,6 +39,7 @@ export default {
 <style>
     .decks {
         display: flex;
+        flex-wrap:wrap;
         justify-content: space-between;
         align-items: center;
         
@@ -49,7 +50,7 @@ export default {
   border-radius: 10px;
   padding: 40px;
   flex: 1;
-  margin: 0 20px;
+  margin: 20px 20px;
   font-size:22px;
   font-family:copperplate;
   text-decoration: none; 
