@@ -30,6 +30,11 @@ public class JDBCCardDAO implements CardDAO {
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlGetAllCards, user); 
 		while (results.next()) {
 			Card card = mapRowToCard(results);
+			//add keywords to card
+			String keywords = getKeywordsByCard(card.getId());
+			card.setKeywords(keywords);
+
+			
 			allCards.add(card);
 		}
 		
@@ -74,17 +79,19 @@ public class JDBCCardDAO implements CardDAO {
 	public List<Card> getCardsByKeyword(String user, String keyword) {
 		List<Card> cards = new ArrayList<>();
 		
-		String sqlGetCardsByKeyword = "SELECT card_id, question, answer, subject.subject_name, \n" + 
-				" FROM cards\n" + 
-				" JOIN subject USING (subject_id)\n" + 
-				" JOIN card_keyword USING (card_id)\n" + 
-				" JOIN keyword USING (keyword_id)\n" + 
-				" JOIN users ON creator_id = user_id\n" + 
+		String sqlGetCardsByKeyword = "SELECT card_id, question, answer, subject.subject_name" + 
+				" FROM cards" + 
+				" JOIN subject USING (subject_id)" + 
+				" JOIN card_keyword USING (card_id)" + 
+				" JOIN keyword USING (keyword_id)" + 
+				" JOIN users ON creator_id = user_id" + 
 				" WHERE users.username = ? AND keyword.keyword ILIKE ?;";
 		
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlGetCardsByKeyword, user, keyword);
 		while (results.next()) {
 			Card card = mapRowToCard(results);
+			String keywords = getKeywordsByCard(card.getId());
+			card.setKeywords(keywords);
 			cards.add(card);
 		}
 		
@@ -106,7 +113,7 @@ public class JDBCCardDAO implements CardDAO {
 	}
 	
 	@Override
-	public void createCard(String question, String answer, String subject, String deckName, String user) {
+	public void createCard(String question, String answer, String subject, String deckName, String keywords, String user) {
 		if (subject == null) {
 			subject = "no subject";
 			createSubject(subject);
@@ -116,6 +123,7 @@ public class JDBCCardDAO implements CardDAO {
 		createSubject(subject);
 		int newCardId = intializeCard(question, answer, subject, user);
 		addCardToDeck(deckName,  user, newCardId);
+		addKeywordsToCard(keywords, newCardId); 
 		
 	}
 
@@ -142,11 +150,24 @@ public class JDBCCardDAO implements CardDAO {
 		jdbcTemplate.update(sqlAddCardToDeck, deckName, user, cardId);		
 
 	}
-
 	
-	@Override
-	public boolean addKeywordsToCard(String user, String answer, String keywords) {
-		return false;
+	private void addKeywordsToCard(String keywords, int cardId) {
+		
+		String sqlAddKeyword = "INSERT INTO keyword (keyword) VALUES (?);"; 
+		String sqlAddKeywordToCard =  "INSERT INTO card_keyword (card_id, keyword_id)" + 
+				" VALUES (?, (SELECT keyword_id FROM keyword WHERE keyword = ?));";
+		
+		String[] keywordArray = keywords.split(" ");
+		for (int i = 0; i < keywordArray.length; i++) {
+			String keyword = keywordArray[i];
+			String sqlCheckForKeyword = "SELECT keyword FROM keyword WHERE keyword = ?;";
+			SqlRowSet keywordRow = jdbcTemplate.queryForRowSet(sqlCheckForKeyword, keyword);
+			
+			if (keywordRow.next() == false) {
+				jdbcTemplate.update(sqlAddKeyword, keyword);
+			}		
+			jdbcTemplate.update(sqlAddKeywordToCard, cardId, keyword);		
+		}
 	}
 	
 	@Override
@@ -161,10 +182,25 @@ public class JDBCCardDAO implements CardDAO {
 	@Override 
 	public void deleteCard(int cardId) {
 		String sqlDeleteCard = "DELETE FROM deck_cards WHERE card_id = ?;" + 
+				" DELETE FROM card_keyword WHERE card_id = ?;" +
 				" DELETE FROM cards WHERE card_id = ?;";
 		
-		jdbcTemplate.update(sqlDeleteCard, cardId, cardId);
+		jdbcTemplate.update(sqlDeleteCard, cardId, cardId, cardId);
 		
+	}
+	
+	private String getKeywordsByCard(int cardId) {
+		String sqlGetKeywords = "SELECT keyword FROM keyword JOIN card_keyword USING (keyword_id)" + 
+				" WHERE card_id = ?;";
+		
+		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlGetKeywords, cardId);
+			
+		String keywords = "";
+		while (results.next()) {
+			keywords = keywords + " " + results.getString(1);
+			
+		}
+		return keywords;
 	}
 	
 	private Card mapRowToCard(SqlRowSet rs) {

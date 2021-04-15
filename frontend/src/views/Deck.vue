@@ -4,7 +4,10 @@
         <h3>{{deckDescription}}</h3>
         <div>
             <button class="addCards" v-if= "!showForm" v-on:click= "showForm = true">Add card</button>
-            <create-card v-if= "showForm" v-bind:deckName = "deckName" v-bind:deckDescription = "deckDescription"/>
+            <create-card v-if= "showForm" 
+                         v-bind:deckName = "deckName" 
+                         v-bind:deckDescription = "deckDescription"
+                         v-bind:deckId = "deckId"/>
         </div>
         <div class = "cards">
             <div v-for = "card in cards" 
@@ -37,6 +40,7 @@ export default {
             cards:[],
             questionUp : true,
             showForm:false,
+            deckId:''
         }
     },
     methods: {

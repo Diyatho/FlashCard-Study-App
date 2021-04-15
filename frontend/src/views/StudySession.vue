@@ -27,7 +27,7 @@ export default {
     data(){
         return{
             decks:[],
-            deckName:''
+            deckName:'--Deck name--'
         }
     },
     created() {
