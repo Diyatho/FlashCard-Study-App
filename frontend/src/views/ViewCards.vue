@@ -1,10 +1,5 @@
 <template>
     <div>
-      <div>
-        <label for="search">Search Cards By Keyword: </label>
-        <input type="text" placeholder="Type keyword here">
-        <input type="button" v-model="card.keywords" value="Search">
-      </div>  
       <h1>All Cards</h1>
       <div class = "cards">
             <div v-for = "card in cards" 
