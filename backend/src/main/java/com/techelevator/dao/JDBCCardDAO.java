@@ -127,7 +127,6 @@ public class JDBCCardDAO implements CardDAO {
 			addKeywordsToCard(keywords, newCardId); 
 		}
 		
-		
 	}
 
 	private int intializeCard(String question, String answer, String subject, String user) {
