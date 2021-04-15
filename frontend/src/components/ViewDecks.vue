@@ -17,7 +17,7 @@ export default {
         }
     },
     created(){
-    cardService.getCards().then(response =>{
+    this.cardService.getCards().then(response =>{
       this.cards = response.data;
 
     })
@@ -25,3 +25,9 @@ export default {
     
 }
 </script>
+
+<style>
+
+
+
+</style>
