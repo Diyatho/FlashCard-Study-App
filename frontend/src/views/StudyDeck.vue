@@ -18,7 +18,6 @@
         </div>
     </div>
 </template>
-
 <script>
 import deckService from '../services/DeckService';
 import SingleCard from '../components/SingleCard'
@@ -46,20 +45,14 @@ export default {
             else{
                 this.endOfDeck = true;
             }
-
-            
         },
         markRight(){
             this.score++;
         },
         showFinalScore(){
             this.showScore = true;
-
         }
-
     },
-
-
     created() {
         deckService.getCardsByDeckId(this.$route.params.deckId).then(response => {
         this.deckName = response.data.deckName;
@@ -70,7 +63,5 @@ export default {
     }   
 }
 </script>
-
 <style>
-
 </style>

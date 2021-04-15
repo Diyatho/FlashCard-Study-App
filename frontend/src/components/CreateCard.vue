@@ -90,9 +90,9 @@ export default {
       this.$router.push(`/user/decks/${this.deckId}`);
     },
 
-    //takes the user back to deck page
-    backToDeck(){
-      this.$router.push(`/user/decks/${this.deckId}`);
+    //takes the user back to home page
+    goHome(){
+      this.$router.push('/');
 
     }
   }
