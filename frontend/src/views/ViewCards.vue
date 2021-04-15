@@ -1,8 +1,13 @@
 <template>
     <div>
+      <div>
+        <label for="search">Search Cards By Keyword: </label>
+        <input type="text"  placeholder="Type keyword here" v-model = "keyword">
+        <input type="button" value="Search">
+      </div>
       <h1>All Cards</h1>
       <div class = "cards">
-            <div v-for = "card in cards" 
+            <div v-for = "card in filteredCards" 
                  v-bind:key = "card.id">
                  <!--v-on:click="viewCardDetails(card.id)">-->
                 <card v-bind:card="card"/>
@@ -24,10 +29,21 @@ export default {
     },
     data(){
         return{
-            cards: []
+            cards: [],
+            keyword:''
 
         }
     },
+    computed: {
+    filteredCards() {
+      //const reviewsFilter = parseInt(this.$store.state.filter);
+      const cards = this.cards;
+      console.log(cards);
+      return cards.filter((card) => {
+        return this.keyword == '' ? true: card.question.includes("What");
+      });
+    },
+  },
     created(){
     cardService.getCards().then(response =>{
       this.cards = response.data;

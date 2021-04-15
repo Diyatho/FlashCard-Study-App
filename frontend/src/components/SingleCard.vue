@@ -6,9 +6,6 @@
               <div>
                <button class = "showAnswer" v-on:click = "questionUp = false">Show Answer</button>
               </div>
-              <div v-if= "endOfDeck" class = "alert"> 
-                  <p>You have reached the end of the deck!</p>
-              </div> 
               
             </div>
             <div v-on:click = "questionUp = true" v-if= "!questionUp" class="boxed answer">

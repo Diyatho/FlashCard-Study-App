@@ -7,7 +7,6 @@
 
      <div class="form-element">
        {{deckName}}
-       test1{{deckId}}
         <label for="question">Question:</label>
         <!--<input id="question" type="text" v-model="newCard.question" />-->
         <textarea id="question" rows="4" cols="50" v-model="newCard.question"/>
