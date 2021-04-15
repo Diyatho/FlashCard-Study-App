@@ -83,14 +83,6 @@ const router = new Router({
       }
     },
     {
-      path: "/user/cards",
-      name: "viewCards",
-      component: ViewCards,
-      meta: {
-        requiresAuth: true
-      }
-    },
-    {
       path: "/user/edit/:id/:cardId",
       name: "edit-card",
       component: EditCard,

@@ -1,6 +1,6 @@
 <template>
   <body>
-    <div id="container">
+	  <div id="container">
      
        <br>
             <img id="logo1" src="@/assets/TEHOOT.png" alt="logo" />
@@ -22,22 +22,30 @@
               >
               <br />
             </form>
-          </div>	
+          </div>
+        
+     
+      <br />
+		
+	
        <!-- <div id="flip3a"> -->
             <div class="question" id="question">What is your favorite color?</div>
             <!-- <div class="answer" id="answer">Java Green</div> -->
         
+
+        <br />
         <p id="about">
 		Wise up on any subject! <br />
-      <br />
+		  <br />
           Create custom flash cards! <br />
-      <br />
+		  <br />
           Save decks for reference!<br />
-      <br />
+		  <br />
           Have study sessions!<br />
-      <br />
+		  <br />
         </p>
         <img id="Owl1" src="@/assets/TEHOOTOwl.png" alt="Owl" />
+        <br />
             <div id="answer">Java Green</div> 
           <!-- <div class="flip3b">
             <div id="question">What is your favorite color?</div>
@@ -55,7 +63,6 @@
 #Owl1 {
   width: 275px;
   margin: 15px;
-  justify-self: center;
   grid-area: Owl;
 }
 button {
@@ -151,7 +158,6 @@ button {
   text-decoration: none;
   grid-area: question;
   align-self: center;
-  justify-self: center;
   
 }
 #answer {
@@ -172,21 +178,19 @@ button {
   text-align: center;
   text-decoration: none;
   grid-area: answer;
-  justify-self: center;
-
   
 }
 #container {
   display: grid;
   grid-gap: 10px;
-  grid-template-columns: .5fr 1fr 1fr 1fr .5fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   /* grid-template-rows: 1fr 1fr 1fr; */
   grid-template-areas:
   ". logo logo form ."
   ". question question about ."
   ". Owl answer answer .";
   /* align-self: left; */
- /* margin: 0px 50px; */
+ margin: 0px 50px;
 }
 /* header {
   display: inline-block;
