@@ -13,12 +13,6 @@ public class Card {
 	private String keywords;;
 	private String deckName;
 	
-//	public Card (String question, String answer, String subject) {
-//	      this.question = question;
-//	      this.answer = answer;
-//	      this.subject = subject;
-//	   
-//	}
 
 	public int getId() {
 		return id;

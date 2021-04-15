@@ -22,9 +22,5 @@ public interface CardDAO {
 	
 	void deleteCard(int cardId);
 	
-	//private method
-//	boolean addKeywordsToCard(String user, String answer, String keywords);
-
-	
 
 }

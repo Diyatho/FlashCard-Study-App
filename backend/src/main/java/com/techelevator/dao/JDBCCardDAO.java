@@ -117,16 +117,16 @@ public class JDBCCardDAO implements CardDAO {
 		if (subject == null) {
 			subject = "no subject";
 			createSubject(subject);
-			int newCardId = intializeCard(question, answer, subject, user);
-			addCardToDeck(deckName,  user, newCardId);
-		}
+
+		} else {
 		createSubject(subject);
+		}
+
 		int newCardId = intializeCard(question, answer, subject, user);
 		addCardToDeck(deckName,  user, newCardId);
 		if(keywords!= null) {
 			addKeywordsToCard(keywords, newCardId); 
 		}
-		
 		
 	}
 

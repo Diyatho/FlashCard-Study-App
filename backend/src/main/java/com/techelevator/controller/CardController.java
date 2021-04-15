@@ -29,16 +29,6 @@ public class CardController {
 		return dao.getAllCards(principal.getName());
 	}
 	
-//	@RequestMapping(path = "/user/decks/cards/{cardId}", method = RequestMethod.GET)
-//	public Card getCardById(@PathVariable int cardId) {
-//		return dao.getCardById(cardId);
-//	}
-	
-//	@RequestMapping(path = "/user/cards/{subject}", method = RequestMethod.GET)
-//	public List<Card> getCardsBySubject(Principal principal, @PathVariable String subject) {
-//		return dao.getCardsBySubject(principal.getName(), subject);
-//	}
-	
 	@RequestMapping(path = "/user/cards/{keyword}", method = RequestMethod.GET)
 	public List<Card> getCardsByKeyword(Principal principal, @PathVariable String keyword) {
 		return dao.getCardsByKeyword(principal.getName(), keyword);
