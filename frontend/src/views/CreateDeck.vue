@@ -11,7 +11,7 @@
             <textarea id="deckDescription" name="deckDescription" rows="4" cols="30" v-model="deckDescription"></textarea>
         </div>
 
-        <button class="addCards" v-if= "!showForm" v-on:click= "createNewDeck">Add card to deck</button>
+        <button class="addCards" v-if= "!showForm" v-on:click= "createNewDeck">Create Deck</button>
         <create-card v-if= "showForm" v-bind:deckName = "deckName" v-bind:deckDescription = "deckDescription"/>
         <br>
         <br>
