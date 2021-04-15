@@ -1,6 +1,6 @@
 <template>
 <div>
-    <form v-on:submit.prevent="addNewCard">
+    <form v-if = "formShow" v-on:submit.prevent="addNewCard">
 
       <div class="status-message success" v-show="formAddedSuccess">Card created successfully</div>
       <div class="status-message error" v-show="formAddedFailure">{{errorMsg}}</div>
@@ -48,7 +48,8 @@ export default {
             },
             formAddedSuccess: false, //controls display of success status message
             formAddedFailure: false, //controls display of error status message
-            errorMsg: ''
+            errorMsg: '',
+            formShow:true
         }
     },
     methods:{
@@ -91,7 +92,8 @@ export default {
 
     //takes the user back to deck page - not working now so routing to home page now.
     backToDeck(){
-      this.$router.push('/');
+      //this.$router.push('/');
+      this.formShow = false;
 
     }
   }
