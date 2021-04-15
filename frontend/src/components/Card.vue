@@ -14,7 +14,7 @@
         </div>
         <!--Back-->
         <div v-on:click="questionUp = true"
-        v-else
+        v-else 
         class="boxed answer"
         key="back"
         >
@@ -54,7 +54,7 @@ export default {
 .boxed {
   text-align: center;
   background-color: rgb(184, 190, 201);
-  line-height: 100px;
+  line-height: 30px;
   height: 200px;
   padding: 20px;
   width: 400px;

@@ -26,7 +26,7 @@
       </div>
       <input id="add" type="submit" value="Add to deck" />
        <input id="cancel" type="button" value="Cancel" v-on:click="resetForm" />
-       <input id="view" type="button" value="View Deck" v-on:click="goHome" />
+       <input id="view" type="button" value="View Deck" v-on:click="backToDeck" />
 
     </form>
 
@@ -39,7 +39,7 @@
 import cardService from '@/services/CardService';
 export default {
     name:"create-card",
-    props: ["deckName"],
+    props: ["deckName", "deckId"],
     data(){
         return{
             newCard:{
@@ -87,6 +87,7 @@ export default {
     // clears the form
     resetForm() {
       this.newCard = {};
+      this.$router.push(`/user/decks/${this.deckId}`);
     },
 
     //takes the user back to home page
