@@ -17,7 +17,7 @@
         <div v-if= "endOfDeck" class = "alert">
             <p>You have reached the end of the deck! Click "End Study Session" to see your score!</p>
         </div>
-        <div v-if="showScore">
+        <div v-if="showScore" class = "alert">
             Your score is {{score}} out of {{questions}}!
         </div>
     </div>
@@ -145,6 +145,9 @@ export default {
     padding:11px 23px;
     text-decoration:none;
     /* text-shadow:0px -1px 0px #2B665E; */
+}
+.alert{
+   font-size: 24px; 
 }
 
 </style>

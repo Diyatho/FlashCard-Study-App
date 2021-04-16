@@ -10,11 +10,11 @@
                          v-bind:deckId = "deckId"/>
         </div>
         <div class = "cards">
-            <div v-for = "card in cards" 
+           <!-- <div v-for = "card in cards" 
                  v-bind:key = "card.id">
-                 <!--v-on:click="viewCardDetails(card.id)">-->
-                <card v-bind:card="card" v-bind:deckId="deckId"/>
-            </div>
+                 v-on:click="viewCardDetails(card.id)">-->
+                <card v-for = "card in cards" v-bind:card="card" v-bind:key = "card.id" v-bind:deckId="deckId"/>
+            <!--</div>-->
         </div>
         
 
@@ -61,4 +61,20 @@ export default {
     
 }
 </script>
+
+<style>
+    .cards{
+        display: flex;
+        flex-wrap:wrap;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+    .main{
+        display:flex;
+        flex-direction: row;
+    }
+
+
+
+</style>
 
